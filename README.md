@@ -1,8 +1,6 @@
-## 解説
-## [データ格納先](https://drive.google.com/drive/folders/19jJE69K2ZnlMbkTTFNgB0z4TjvQRHdFb)
-データは  
-[読売新聞 衆議院選挙2026](https://www.yomiuri.co.jp/election/shugiin/)  
-から取得しています。
+# 解説
+## [データ格納Drive](https://drive.google.com/drive/folders/19jJE69K2ZnlMbkTTFNgB0z4TjvQRHdFb)
+データは [読売新聞 衆議院選挙2026](https://www.yomiuri.co.jp/election/shugiin/)  から取得しています。
 
 ---
 
