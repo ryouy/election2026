@@ -1,4 +1,56 @@
-# README.md
+## ファイル構成
+
+データは  
+[読売新聞 衆議院選挙2026](https://www.yomiuri.co.jp/election/shugiin/)  
+から取得しています。
+
+---
+
+### prefecture/（都道府県ごとのファイル）
+
+- `_prefecture_all.csv`  
+  全都道府県の候補者データ
+
+- `_prefecture_all_party.csv`  
+  政党別に並び替えたデータ
+
+---
+
+### proportional/（比例ブロックごとのファイル）
+
+- `_proportional_all.csv`  
+  全比例ブロックの候補者データ
+
+- `_proportional_all_party.csv`  
+  政党別に並び替えたデータ
+
+---
+
+### all/（小選挙区と比例代表を統合）
+
+- `_all_candidates.csv`  
+  全候補者データ
+
+- `_all_candidates_party.csv`  
+  政党別に並び替えたデータ
+
+---
+
+### question_mapping.csv（設問と回答の対応表）
+
+設問番号、質問文、選択肢の意味を記載しています。
+
+---
+
+### cache_candidates/（候補者詳細データ）
+
+候補者詳細ページから取得したデータを、JSON形式で保存しています。  
+途中で収集が失敗した場合の再取得対策用です。
+
+- `[ハッシュ値].json`  
+  候補者ページURLをハッシュ化したファイル名。  
+  1人分の候補者データを保存します。
+
 
 ## 2026 Japanese Election – Candidate Data Collection (Yomiuri)
 
