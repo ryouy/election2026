@@ -1,5 +1,5 @@
 # 解説
-### [読売Drive](https://drive.google.com/drive/folders/19jJE69K2ZnlMbkTTFNgB0z4TjvQRHdFb)  [NHKDrive](https://drive.google.com/drive/folders/1QPTDWgc7gTmAlE4nVuKk6dQkJ5rjgCbF?usp=sharing)
+### [読売Drive](https://drive.google.com/drive/folders/19jJE69K2ZnlMbkTTFNgB0z4TjvQRHdFb) / [NHKDrive](https://drive.google.com/drive/folders/1QPTDWgc7gTmAlE4nVuKk6dQkJ5rjgCbF?usp=sharing)
 データは [読売新聞 衆議院選挙2026](https://www.yomiuri.co.jp/election/shugiin/) / [NHK 衆議院選挙2026 特設サイト](https://news.web.nhk/senkyo/database/shugiin/) から取得しています。
 
 ---
