@@ -1,231 +1,137 @@
-# 解説
-### [読売Drive](https://drive.google.com/drive/folders/19jJE69K2ZnlMbkTTFNgB0z4TjvQRHdFb) / [NHKDrive](https://drive.google.com/drive/folders/1QPTDWgc7gTmAlE4nVuKk6dQkJ5rjgCbF?usp=sharing)
-データは [読売新聞 衆議院選挙2026](https://www.yomiuri.co.jp/election/shugiin/) / [NHK 衆議院選挙2026 特設サイト](https://news.web.nhk/senkyo/database/shugiin/) から取得しています。
+# Election 2026 Candidate Survey Viewer (UMAP / PCA)
+
+This repository contains a **static 3D scatter viewer** for exploring 2026 Japanese election candidate survey answers.
+
+* Each candidate is plotted as a point in 3D.
+* Points that are **close** represent candidates with **similar answer patterns** (for the selected question).
+* You can switch questions (Q1–Q25), filter by party, search by name, and inspect answers via tooltips.
 
 ---
 
-### prefecture/（都道府県ごとのファイル）
+## What’s inside
 
-- `_prefecture_all.csv`  
-  全都道府県の候補者データ
-
-- `_prefecture_all_party.csv`  
-  政党別に並び替えたデータ
-
----
-
-### proportional/（比例ブロックごとのファイル）
-
-- `_proportional_all.csv`  
-  全比例ブロックの候補者データ
-
-- `_proportional_all_party.csv`  
-  政党別に並び替えたデータ
+* `public/index.html`
+  * The entire frontend (HTML/CSS/JS) in one file
+  * Renders a 3D scatter plot with **Three.js**
+  * Loads data from `public/data/` using `fetch()`
+* `public/data/`
+  * `question_manifest.json`: question list + metadata (text, options, columns, data files)
+  * `embed_*.json`: per-question datasets (candidates + answers + 3D coordinates)
+* `build_embeddings.py`
+  * Offline script to generate `question_manifest.json` and `embed_*.json` from CSV sources
 
 ---
 
-### all/（小選挙区と比例代表を統合）
+## How the analysis works (high level)
 
-- `_all_candidates.csv`  
-  全候補者データ
+For each question (Q1–Q25), we build a numeric feature vector per candidate and project it into 3D.
 
-- `_all_candidates_party.csv`  
-  政党別に並び替えたデータ
-
----
-
-### question_mapping.csv（設問と回答の対応表）
-
-設問番号、質問文、選択肢の意味を記載しています。
-
----
-
-### cache_candidates/（候補者詳細データ）
-
-候補者詳細ページから取得したデータを、JSON形式で保存しています。  
-途中で収集が失敗した場合の再取得対策用です。
-
-- `[ハッシュ値].json`  
-  候補者ページURLをハッシュ化したファイル名。  
-  1人分の候補者データを保存します。
-
-
-## 2026 Japanese Election – Candidate Data Collection (Yomiuri)
-
-```markdown
-
-This project is a Jupyter Notebook designed to **collect, process, and analyze candidate information** related to the 2026 Japanese election using publicly available data sources (e.g., Yomiuri Shimbun candidate pages).
-
-The main goal of this notebook is to:
-- Automatically gather candidate detail page URLs  
-- Extract structured information about candidates  
-- Prepare the dataset for further political or media analysis  
-
-```
+* **Preprocessing**
+  * Missing answers are filled with a “neutral” value depending on the question type
+    * Q25 → 5, Q1/Q24 → 0, otherwise → 3
+  * Each answer column is min-max scaled to **[-1, 1]**
+  * Small Gaussian noise is added (default σ=0.05) to reduce exact overlaps for discrete answers
+* **Dimensionality reduction to 3D (offline)**
+  * **UMAP** (if available) or **PCA** (fallback in `auto` mode)
+  * Output coordinates are saved into `embed_<method>_<Q>.json`
+* **Dimensionality reduction to 3D (in-browser option)**
+  * The viewer can recompute a deterministic PCA/curve embedding per question in JavaScript
+  * This helps prevent different questions from “looking identical” when they have only 1–2 columns
+* **Clustering (in the browser)**
+  * Lightweight **KMeans** in 3D
+  * `k` is chosen automatically by a simple “stop when improvement is small” rule
+  * Two views are supported:
+    * global clusters (whole population)
+    * within-party clusters (only for the selected party)
+* **Cluster outlines**
+  * For each cluster, a covariance-based ellipsoid outline (wireframe) is drawn to show cluster shape
 
 ---
 
-## Requirements
+## Run locally (recommended)
 
-This notebook is designed to run in **Google Colab** or a standard Jupyter environment.
+Because the viewer loads JSON via `fetch()`, you should run a local HTTP server (don’t open `file://` directly).
 
-### Python Version
-- Python 3.8+
-
-### Required Libraries
+* Option A: serve `public/` as the web root
 
 ```bash
-pip install requests beautifulsoup4 pandas tqdm lxml
-````
-
-If using Google Colab, most dependencies are already installed.
-
----
-
-## Google Drive Integration (Colab)
-
-The notebook mounts Google Drive in order to:
-
-* Read input files
-* Save scraped or processed data
-
-```python
-from google.colab import drive
-drive.mount('/content/drive')
+cd /Users/ryo/Documents/umap_multi_elegant/public
+python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Make sure your Drive structure matches the expected paths in the notebook.
+* Then open:
+  * `http://127.0.0.1:8000/`
 
 ---
 
-## How to Use
+## Embedding modes in the UI
 
-### Step 1: Open the Notebook
+In the top-right panel, you can switch the coordinate mode:
 
-Open `2026_Election_Yomiuri.ipynb` in:
-
-* Google Colab **(recommended)**
-  or
-* Local Jupyter Notebook
+* `PCA (in-browser)`
+  * Recomputes the embedding from answer columns in JavaScript
+* `UMAP (precomputed)`
+  * Uses `embed_umap_Q*.json`
+  * **Strict behavior**: if UMAP data is missing, the viewer will not silently fall back to PCA
+* `PCA (precomputed)`
+  * Uses `embed_pca_Q*.json` (or legacy `embed_Q*.json`)
 
 ---
 
-### Step 2: Install Dependencies (if needed)
+## Generate data (offline)
 
-```python
-!pip install requests beautifulsoup4 pandas tqdm lxml
+The generator expects two CSV files (not included here):
+
+* `_all_candidates.csv`
+  * candidate rows + survey answer columns
+* `question_mapping.csv`
+  * question metadata (full text, option labels, column mapping)
+
+### Generate both UMAP and PCA files (recommended)
+
+```bash
+python3 build_embeddings.py \
+  --candidates _all_candidates.csv \
+  --mapping question_mapping.csv \
+  --outdir out \
+  --methods umap,pca
 ```
 
----
+* Output:
+  * `out/question_manifest.json`
+  * `out/embed_umap_Q1.json`, `out/embed_pca_Q1.json`, ... (per question)
 
-### Step 3: Run Cells in Order
+### Generate only UMAP (and fail if UMAP is unavailable)
 
-The notebook performs the following operations:
-
-1. **Collect Candidate List URLs**
-
-   * Accesses index pages containing candidate links
-   * Extracts URLs for each candidate profile
-
-2. **Fetch Candidate Detail Pages**
-
-   * Sends HTTP requests
-   * Handles encoding and HTML parsing
-
-3. **Parse Candidate Information**
-   Typical fields include:
-
-   * Name
-   * Party
-   * Electoral district
-   * Age
-   * Career / background
-   * Policy statements (if available)
-
-4. **Store Results**
-
-   * Data is saved into a Pandas DataFrame
-   * Can be exported as CSV
-
-Example:
-
-```python
-df.to_csv("candidates_2026.csv", index=False)
+```bash
+python3 build_embeddings.py \
+  --candidates _all_candidates.csv \
+  --mapping question_mapping.csv \
+  --outdir out \
+  --methods umap
 ```
 
----
+### Publish the generated files to the viewer
 
-## Output Format
+Copy the outputs into `public/data/`:
 
-The final dataset is structured as a table:
-
-| Name | Party | District | Age | Career | Source URL |
-| ---- | ----- | -------- | --- | ------ | ---------- |
-
-This format allows:
-
-* Statistical analysis
-* Visualization
-* Machine learning preprocessing
-* NLP on candidate statements
+* `out/question_manifest.json` → `public/data/question_manifest.json`
+* `out/embed_*.json` → `public/data/`
 
 ---
 
-## Legal & Ethical Notes
+## Deploy (static hosting)
 
-* This notebook only accesses **publicly available web pages**
-* Scraping is performed at a moderate rate to avoid server overload
-* Always check the website’s robots.txt and terms of service
-* Data is for **research and educational purposes only**
+This is a pure static site.
 
----
-
-## Customization
-
-You can easily modify:
-
-* Target URLs
-* Fields to extract
-* Output file format
-
-For example, to add a new field:
-
-```python
-candidate_data["twitter"] = twitter_url
-```
+* You can deploy by hosting the `public/` directory
+* Firebase Hosting is supported via `firebase.json` (public directory = `public`)
 
 ---
 
-## Troubleshooting
+## Notes
 
-### Encoding Errors
+* The data source link in the UI points to Yomiuri Online. Please confirm your usage complies with the source’s terms.
+* If you push this viewer into another repository (e.g. a data-collection repo), put the contents of `public/` into a subfolder and serve that folder as the site root.
 
-Try:
 
-```python
-response.encoding = response.apparent_encoding
-```
-
-### Missing Data
-
-* Some candidates do not publish all fields
-* Always handle `None` or empty strings
-
-### Connection Errors
-
-* Use retries
-* Add sleep between requests
-
----
-
-## License
-
-This project is released for **academic and non-commercial research use**.
-If you reuse the code, please cite the data source.
-
----
-
-## Author
-
-Created by: *ryouy*
-Project: 2026 Japanese Election Candidate Data Collection
