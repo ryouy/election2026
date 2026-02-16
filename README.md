@@ -13,9 +13,14 @@ This repository contains a **static 3D scatter viewer** for exploring 2026 Japan
 ## What’s inside
 
 * `public/index.html`
-  * The entire frontend (HTML/CSS/JS) in one file
+  * HTML shell for the viewer
+  * Loads styles and scripts from `public/assets/`
   * Renders a 3D scatter plot with **Three.js**
   * Loads data from `public/data/` using `fetch()`
+* `public/assets/css/app.css`
+  * Viewer styles (extracted from the former monolithic HTML)
+* `public/assets/js/`
+  * Split JS files (state / embedding / clustering / viewer / bootstrap)
 * `public/data/`
   * `question_manifest.json`: question list + metadata (text, options, columns, data files)
   * `embed_*.json`: per-question datasets (candidates + answers + 3D coordinates)
@@ -135,5 +140,8 @@ This is a pure static site.
 
 * The data source link in the UI points to Yomiuri Online. Please confirm your usage complies with the source’s terms.
 * If you push this viewer into another repository (e.g. a data-collection repo), put the contents of `public/` into a subfolder and serve that folder as the site root.
+* Legacy backups:
+  * `public/index.monolith.html` (pre-split single-file HTML)
+  * `public/assets/js/_legacy/` (pre-split JS extraction)
 
 

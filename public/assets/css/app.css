@@ -1,0 +1,484 @@
+body { margin: 0; overflow: hidden; font-family: "Noto Sans JP", "Meiryo", sans-serif; background-color: #f0f0f0; }
+        
+        /* レジェンド設定 */
+        #legend {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 16px;
+            border: 1px solid #ddd;
+            display: none; /* 右下の政党一覧パネルは被りやすいので非表示（政党選択は左上へ移動） */
+        }
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .legend-item { 
+            display: flex; align-items: center; margin-bottom: 8px; cursor: pointer; 
+            padding: 4px 8px; border-radius: 4px; transition: background 0.2s;
+        }
+        .legend-item:hover { background-color: #eee; }
+        .legend-item.selected { 
+            background-color: #ddd; 
+            border-left: 4px solid #555;
+            font-weight: bold;
+        }
+        .legend-icon { width: 20px; height: 20px; margin-right: 10px; display: inline-block; }
+
+        /* 右下：データ出典リンク */
+        #source-link{
+            position: fixed;
+            left: 12px;
+            bottom: 12px;
+            z-index: 2000;
+            font-size: 12px;
+            color: rgba(0,0,0,0.7);
+            background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(0,0,0,0.10);
+            border-radius: 999px;
+            padding: 6px 10px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+        }
+        #source-link a{
+            color: inherit;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        #source-link a:hover{ text-decoration: underline; }
+
+        /* 検索ボックス（左カラム内に配置） */
+        #search-container {
+            position: relative;
+            z-index: 1000;
+            width: 100%;
+        }
+        #search-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            outline: none;
+            box-sizing: border-box;
+        }
+        #search-input:focus {
+            border-color: #1f77b4;
+            box-shadow: 0 2px 12px rgba(31, 119, 180, 0.3);
+        }
+        #search-results {
+            list-style: none;
+            margin: 5px 0 0 0;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+        /* --- Left Stack (party + party-cluster + search) --- */
+        #left-stack{
+            position:absolute;
+            top:16px;
+            left:16px;
+            z-index:2600;
+            width:290px;
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+        }
+        .left-panel{
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            padding: 14px 14px 10px;
+            color:#222;
+        }
+        .left-panel .panel-title{
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: .02em;
+            margin-bottom: 10px;
+        }
+        .left-panel .field{ margin-bottom: 10px; }
+        .left-panel .field-label{
+            display:block;
+            font-size: 12px;
+            color:#555;
+            margin-bottom: 6px;
+        }
+        .left-panel select{
+            width:100%;
+            padding: 10px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.95);
+            outline:none;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        .left-panel select:focus{
+            border-color: rgba(0,0,0,0.25);
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+        }
+        .left-panel .toggle{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(0,0,0,0.03);
+            cursor:pointer;
+            user-select:none;
+            font-size: 12px;
+            color:#333;
+        }
+        .left-panel .toggle input{ accent-color:#333; }
+
+        .search-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .search-item:last-child { border-bottom: none; }
+        .search-item:hover { background-color: #f5f5f5; }
+        .search-party { font-size: 12px; color: #666; background: #eee; padding: 2px 6px; border-radius: 4px; }
+
+        #tooltip {
+            position: absolute;
+            display: none;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            pointer-events: none; /* マウスイベントを透過させる（重要） */
+            z-index: 3000;
+            line-height: 1.5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            white-space: nowrap;
+        }
+        #tooltip strong { font-size: 16px; color: #fff; display: block; margin-bottom: 4px; border-bottom: 1px solid #777; padding-bottom: 2px;}
+        .tooltip-row { display: flex; justify-content: space-between; gap: 15px; font-size: 12px; color: #ccc; }
+        .tooltip-val { font-family: monospace; color: #4fc3f7; }
+
+        @media (max-width: 600px) {
+            /* 左カラムを全幅に */
+            #left-stack{
+                left: 10px;
+                right: 10px;
+                bottom: 64px;
+                top: auto;
+                width: auto;
+                max-height: 62vh;
+                overflow: auto;
+            }
+            
+            /* 凡例（右下）を画面下部に小さく配置 */
+            #legend {
+                bottom: 15px;
+                right: 15px;
+                left: 15px;
+                max-height: 25%; /* 3Dエリアを隠さない高さ制限 */
+                padding: 10px;
+                font-size: 12px;
+            }
+            
+            /* ツールバーと被らないように少し上へ */
+            #source-link{
+                bottom: 64px;
+                left: 10px;
+            }
+        }
+
+        /* --- Control Panel (elegant) --- */
+        #control-panel{
+            position:absolute;
+            top:16px;
+            right:16px;
+            z-index:2600;
+            width:290px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            padding: 14px 14px 10px;
+            color:#222;
+        }
+        #control-panel .panel-title{
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: .02em;
+            margin-bottom: 10px;
+        }
+        #control-panel .field{ margin-bottom: 10px; }
+        #control-panel .field-label{
+            display:block;
+            font-size: 12px;
+            color:#555;
+            margin-bottom: 6px;
+        }
+        #control-panel select{
+            width:100%;
+            padding: 10px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.95);
+            outline:none;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        #control-panel select:focus{
+            border-color: rgba(0,0,0,0.25);
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+        }
+        #control-panel #question-title{
+            margin-top: 6px;
+            font-size: 12px;
+            color:#666;
+            line-height: 1.35;
+            display:-webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        #control-panel #question-meta{
+            margin-top: 6px;
+            font-size: 11px;
+            color:#777;
+            opacity: 0.9;
+        }
+        #control-panel #option-filter{
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+        #control-panel #option-filter .row{
+            display:flex;
+            gap:8px;
+            align-items:center;
+            margin-bottom: 8px;
+        }
+        #control-panel #column-select{
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+        #control-panel #clear-option{
+            flex: 0 0 auto;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.95);
+            cursor:pointer;
+            font-size: 12px;
+        }
+        #control-panel #clear-option:hover{ background:#fff; }
+        #option-chips{
+            display:flex;
+            flex-wrap:wrap;
+            gap: 8px;
+        }
+        .chip{
+            border: 1px solid rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.95);
+            border-radius: 999px;
+            padding: 7px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            user-select:none;
+            transition: transform 0.08s ease, background 0.2s ease, border 0.2s ease;
+            white-space: nowrap;
+        }
+        .chip:hover{ background:#fff; transform: translateY(-1px); }
+        .chip.selected{
+            border-color: rgba(31,119,180,0.55);
+            background: rgba(31,119,180,0.10);
+            box-shadow: 0 0 0 3px rgba(31,119,180,0.10);
+            font-weight: 700;
+        }
+        #control-panel .toggles{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        #control-panel .toggle{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(0,0,0,0.03);
+            cursor:pointer;
+            user-select:none;
+            font-size: 12px;
+            color:#333;
+        }
+        #control-panel .toggle input{ accent-color:#333; }
+
+        /* --- Left Panel (party dropdown) --- */
+        #left-panel{
+            position:absolute;
+            top:16px;
+            left:16px;
+            z-index:2600;
+            width:290px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            padding: 14px 14px 10px;
+            color:#222;
+        }
+        #left-panel .panel-title{
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: .02em;
+            margin-bottom: 10px;
+        }
+        #left-panel .field{ margin-bottom: 10px; }
+        #left-panel .field-label{
+            display:block;
+            font-size: 12px;
+            color:#555;
+            margin-bottom: 6px;
+        }
+        #left-panel select{
+            width:100%;
+            padding: 10px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.95);
+            outline:none;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        #left-panel select:focus{
+            border-color: rgba(0,0,0,0.25);
+            box-shadow: 0 0 0 3px rgba(0,0,0,0.06);
+        }
+        #left-panel .toggle{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(0,0,0,0.03);
+            cursor:pointer;
+            user-select:none;
+            font-size: 12px;
+            color:#333;
+        }
+        #left-panel .toggle input{ accent-color:#333; }
+        #party-cluster-legend{
+            margin-top: 8px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.08);
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .pcl-item{ display:flex; align-items:center; gap:8px; margin: 4px 0; }
+        .pcl-swatch{ width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.25); flex:0 0 auto; }
+
+        @media (max-width: 600px){
+            #control-panel{
+                left: 10px;
+                right: 10px;
+                bottom: 64px;
+                top: auto;
+                width: auto;
+                max-height: 62vh;
+                overflow: auto;
+                padding: 12px;
+                border-radius: 14px;
+            }
+            #control-panel .toggles{ grid-template-columns: 1fr; }
+
+            #left-panel{
+                top: 12px;
+                left: 12px;
+                right: 12px;
+                width: auto;
+                padding: 12px;
+                border-radius: 14px;
+            }
+        }
+
+        /* --- Mobile toolbar / sheet toggles --- */
+        #mobile-toolbar{
+            display:none;
+        }
+        @media (max-width: 600px){
+            #mobile-toolbar{
+                display:flex;
+                position: fixed;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                height: 46px;
+                z-index: 2800;
+                background: rgba(255,255,255,0.92);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(0,0,0,0.10);
+                border-radius: 14px;
+                box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+                overflow: hidden;
+            }
+            .mt-btn{
+                flex: 1 1 0;
+                border: none;
+                background: transparent;
+                font-size: 13px;
+                font-weight: 700;
+                color: #222;
+                cursor: pointer;
+            }
+            .mt-btn + .mt-btn{
+                border-left: 1px solid rgba(0,0,0,0.08);
+            }
+            .mt-btn.active{
+                background: rgba(0,0,0,0.06);
+            }
+
+            /* 初期は地図優先でパネルを隠せるように */
+            #left-stack.mobile-hidden,
+            #control-panel.mobile-hidden{
+                display:none !important;
+            }
+
+            /* タップしやすく */
+            #search-input{ font-size: 16px; }
+            .chip{ padding: 9px 12px; font-size: 13px; }
+            #control-panel select{ padding: 12px 12px; font-size: 14px; }
+            .left-panel select{ padding: 12px 12px; font-size: 14px; }
+        }
