@@ -1,59 +1,88 @@
-// 保存ページ用: 元のHomeスクリプトが描いていた「獲得議席」の扇形を、
-// ページ内に残っている政党別議席数から再現して、扇状に広がるアニメーションで描く。
+// 保存ページ用: 元のHome.js(PixiJS)が描いていた「獲得議席」の扇形を Canvas2D で再現する。
+// 形・半径・アニメーション(各帯が左右から順に、議席数に比例した時間で伸びる)は Home.js の実装に合わせてある。
+// 元データ(jyo*.xml)は保存されていないため、政党別の議席数などはページ内のDOMから読む。
 (function () {
   var cv = document.getElementById('mycanvas');
   if (!cv) return;
   var ctx = cv.getContext('2d');
-  var W = cv.width, H = cv.height;
+  var CX = 230, CY = 280;                     // 論理座標 460x280(実キャンバスは2倍)
+  var MAIN = [95, 195], YOYA = [202, 224], BEFORE = [60, 82];
 
-  var seats = [];
-  document.querySelectorAll('.mainArc__party').forEach(function (el) {
-    var n = parseInt(el.querySelector('.mainArc__party__count').textContent, 10);
-    var color = el.style.borderTopColor;
-    if (n > 0) seats.push({ n: n, color: color });
-  });
-  var rest = parseInt((document.querySelector('.mainArc__rest__rest') || {}).textContent, 10) || 0;
-  var total = seats.reduce(function (a, s) { return a + s.n; }, 0) + rest;
-  if (rest > 0) seats.push({ n: rest, color: '#ddd' });
-
-  // 半円を同心円状の列に分け、角度の小さい順(左→右)に、政党の並びどおりに席を割り当てる
-  var rows = 9, cx = W / 2, cy = H - 40, rOut = Math.min(W / 2 - 20, H - 60), rIn = rOut * 0.42;
-  var radii = [], lens = [], sum = 0, i, r;
-  for (i = 0; i < rows; i++) { r = rIn + (rOut - rIn) * i / (rows - 1); radii.push(r); sum += r; }
-  var counts = radii.map(function (r) { return Math.round(total * r / sum); });
-  counts[rows - 1] += total - counts.reduce(function (a, b) { return a + b; }, 0);
-
-  var dots = [];
-  radii.forEach(function (r, ri) {
-    for (var k = 0; k < counts[ri]; k++) {
-      var a = Math.PI * (1 - (k + 0.5) / counts[ri]); // π(左)→0(右)
-      dots.push({ a: a, r: r });
-    }
-  });
-  dots.sort(function (p, q) { return q.a - p.a; });
-  var idx = 0;
-  seats.forEach(function (s) { for (var k = 0; k < s.n && idx < dots.length; k++) dots[idx++].color = s.color; });
-  var size = (rOut - rIn) / rows * 0.36;
-
-  var start = null, dur = 1800;
-  function draw(t) {
-    if (start === null) start = t;
-    var p = Math.min(1, (t - start) / dur);
-    var e = 1 - Math.pow(1 - p, 3);
-    ctx.clearRect(0, 0, W, H);
-    dots.forEach(function (d) {
-      var progress = (Math.PI - d.a) / Math.PI;           // 左から右へ順に出現
-      var local = Math.max(0, Math.min(1, (e * 1.4 - progress * 0.4 - 0) / 0.6));
-      if (local <= 0) return;
-      var rr = d.r * (0.4 + 0.6 * local);                 // 中心から外へ広がる
-      ctx.globalAlpha = local;
-      ctx.fillStyle = d.color || '#ccc';
-      ctx.beginPath();
-      ctx.arc(cx + rr * Math.cos(d.a), cy - rr * Math.sin(d.a), size, 0, Math.PI * 2);
-      ctx.fill();
-    });
-    ctx.globalAlpha = 1;
-    if (p < 1) requestAnimationFrame(draw);
+  function num(sel) { var e = document.querySelector(sel); return e ? parseInt(e.textContent.replace(/[^\d]/g, ''), 10) || 0 : 0; }
+  function parties(group) {
+    return [].map.call(document.querySelectorAll('.mainArc__partySeats--' + group + ' .mainArc__party'), function (el) {
+      return { n: parseInt(el.querySelector('.mainArc__party__count').textContent, 10), color: el.style.borderTopColor };
+    }).filter(function (p) { return p.n > 0; });
   }
-  requestAnimationFrame(draw);
+  var yoto = parties('yoto'), yato = parties('yato').reverse();   // 野党は右端から並べる
+  var yotoN = num('.mainArc__allSeat--yoto .mainArc__allSeat__count');
+  var yatoN = num('.mainArc__allSeat--yato .mainArc__allSeat__count');
+  var yotoBef = num('.mainArc__beforeSeat--yoto .mainArc__beforeSeat__count');
+  var yatoBef = num('.mainArc__beforeSeat--yato .mainArc__beforeSeat__count');
+  var rest = num('.mainArc__rest__rest');
+  var all = yotoN + yatoN + rest || 465;
+  var majority = Math.floor(all / 2) + 1;
+  var deg = function (n) { return 180 / all * n; };
+
+  // 1本の帯: side='right'(与党・左から時計回り) / 'left'(野党・右から反時計回り)
+  var arcs = [];
+  function addArcs(list, side, radii, key, delayBase, totalN) {
+    var acc = 0, delay = delayBase || 0;
+    list.forEach(function (p) {
+      var n = key ? p[key] : p.n;
+      if (!n) return;
+      arcs.push({ side: side, r: radii, color: p.color, s: deg(acc), e: deg(acc + n),
+                  dur: totalN ? n / totalN * 1.5 : 1.5, delay: totalN ? acc / totalN * 1.5 : 0 });
+      acc += n;
+    });
+  }
+  addArcs([{ n: yotoN, color: '#d3213e' }], 'right', YOYA);
+  addArcs([{ n: yatoN, color: '#1173e5' }], 'left', YOYA);
+  addArcs(yoto, 'right', MAIN, null, 0, yotoN);
+  addArcs(yato, 'left', MAIN, null, 0, yatoN);
+  addArcs([{ n: yotoBef, color: '#fcbfbf' }], 'right', BEFORE, null, 0, yotoBef);
+  addArcs([{ n: yatoBef, color: '#aad4f1' }], 'left', BEFORE, null, 0, yatoBef);
+
+  function ang(side, d) { return (side === 'left' ? 360 - d : d + 180) * Math.PI / 180; }
+  function drawArc(a, t) {
+    var p = Math.max(0, Math.min(1, (t - a.delay) / a.dur));
+    if (p <= 0) return;
+    var e = a.s + (a.e - a.s) * p, acw = a.side === 'left';
+    ctx.beginPath();
+    ctx.fillStyle = a.color;
+    ctx.arc(CX, CY, a.r[1], ang(a.side, a.s), ang(a.side, e), acw);
+    ctx.arc(CX, CY, a.r[0], ang(a.side, e), ang(a.side, a.s), !acw);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function text(str, x, y, size, numeric) {
+    ctx.fillStyle = '#000';
+    ctx.font = '600 ' + size + 'px ' + (numeric ? '"Helvetica Neue",Arial,sans-serif' : '"Hiragino Kaku Gothic ProN","ヒラギノ角ゴ ProN W3",Meiryo,sans-serif');
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(str, x, y);
+  }
+  function drawMajority() {
+    var a = (deg(majority) + 180) * Math.PI / 180, c = Math.cos(a), s = Math.sin(a);
+    ctx.beginPath(); ctx.strokeStyle = '#1c2a4a'; ctx.lineWidth = 1;
+    ctx.moveTo(CX + BEFORE[0] * c, CY + BEFORE[0] * s);
+    ctx.lineTo(CX + (YOYA[1] + 16) * c, CY + (YOYA[1] + 16) * s);
+    ctx.stroke();
+    var r = YOYA[1] + 32;
+    text(String(majority), CX + r * c, CY + r * s, 24, true);
+    text('過半数', CX + r * c, CY + r * s - 16, 14, true);
+  }
+
+  var start = null;
+  function frame(ts) {
+    if (start === null) start = ts;
+    var t = location.hash === '#final' ? 99 : (ts - start) / 1000;  // #final: アニメなしで最終形を表示
+    ctx.setTransform(2, 0, 0, 2, 0, 0);
+    ctx.clearRect(0, 0, 460, 280);
+    arcs.forEach(function (a) { drawArc(a, t); });
+    drawMajority();
+    text('選挙前勢力', CX, CY - 8, 14);
+    if (t < 1.5 + 0.05) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
 })();
