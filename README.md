@@ -2,6 +2,8 @@
 
 [Try here!](https://yomiuri-election-2026.web.app)
 
+[Data source](https://github.com/ryouy/election2026/tree/main/GetDataPy)
+
 This repository contains a **static 3D scatter viewer** for exploring 2026 Japanese election candidate survey answers.
 
 * Each candidate is plotted as a point in 3D.
