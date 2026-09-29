@@ -2,7 +2,7 @@
 
 [Try here!](https://yomiuri-election-2026.web.app)
 
-[Data source](https://github.com/ryouy/election2026/tree/main/GetDataPy)
+[Data source](https://github.com/ryouy/election2026/tree/main/GetDataPy) / Saved pages of the original sites: [Yomiuri](https://ryouy.github.io/election2026/snapshots/yomiuri/) · [NHK](https://ryouy.github.io/election2026/snapshots/nhk/)
 
 This repository contains a **static 3D scatter viewer** for exploring 2026 Japanese election candidate survey answers.
 
@@ -26,7 +26,7 @@ This repository contains a **static 3D scatter viewer** for exploring 2026 Japan
 * `public/data/`
   * `question_manifest.json`: question list + metadata (text, options, columns, data files)
   * `embed_*.json`: per-question datasets (candidates + answers + 3D coordinates)
-* `build_embeddings.py`
+* `tools/umap_viewer/build_embeddings.py`
   * Offline script to generate `question_manifest.json` and `embed_*.json` from CSV sources
 
 ---
@@ -64,7 +64,7 @@ Because the viewer loads JSON via `fetch()`, you should run a local HTTP server 
 * Option A: serve `public/` as the web root
 
 ```bash
-cd /Users/ryo/Documents/umap_multi_elegant/public
+cd public
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
@@ -99,7 +99,7 @@ The generator expects two CSV files (not included here):
 ### Generate both UMAP and PCA files (recommended)
 
 ```bash
-python3 build_embeddings.py \
+python3 tools/umap_viewer/build_embeddings.py \
   --candidates _all_candidates.csv \
   --mapping question_mapping.csv \
   --outdir out \
@@ -113,7 +113,7 @@ python3 build_embeddings.py \
 ### Generate only UMAP (and fail if UMAP is unavailable)
 
 ```bash
-python3 build_embeddings.py \
+python3 tools/umap_viewer/build_embeddings.py \
   --candidates _all_candidates.csv \
   --mapping question_mapping.csv \
   --outdir out \

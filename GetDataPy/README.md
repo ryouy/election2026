@@ -1,240 +1,82 @@
-# 解説
-### [読売Drive](https://drive.google.com/drive/folders/19jJE69K2ZnlMbkTTFNgB0z4TjvQRHdFb) / [NHKDrive](https://drive.google.com/drive/folders/1QPTDWgc7gTmAlE4nVuKk6dQkJ5rjgCbF?usp=sharing)
-データは [読売新聞 衆議院選挙2026](https://www.yomiuri.co.jp/election/shugiin/) / [NHK 衆議院選挙2026 特設サイト](https://news.web.nhk/senkyo/database/shugiin/) から取得しています。
+# GetDataPy — 候補者データ収集
 
-### 当時のサイトの状況（保存ページ）
+2026年衆議院選挙の候補者情報・アンケート回答を、公開ページから収集・整形するノートブックとデータ置き場です。
 
-データ取得時点の各サイトを保存したものを、GitHub Pagesで公開しています。
+- 読売新聞: [衆議院選挙2026](https://www.yomiuri.co.jp/election/shugiin/)
+- NHK: [衆議院選挙2026 特設サイト](https://news.web.nhk/senkyo/database/shugiin/)
+- 取得済みデータ: [読売 Drive](https://drive.google.com/drive/folders/19jJE69K2ZnlMbkTTFNgB0z4TjvQRHdFb) / [NHK Drive](https://drive.google.com/drive/folders/1QPTDWgc7gTmAlE4nVuKk6dQkJ5rjgCbF?usp=sharing)
+
+## 当時のサイトの状況（保存ページ）
+
+データ取得時点のサイトを保存し、GitHub Pagesで公開しています。
 
 - [読売新聞 開票速報・結果](https://ryouy.github.io/election2026/snapshots/yomiuri/)
 - [NHK 選挙結果](https://ryouy.github.io/election2026/snapshots/nhk/)
 
 ファイルは [docs/snapshots/](../docs/snapshots/) にあります。
 
----
+## ノートブック
 
-### prefecture/（都道府県ごとのファイル）
+| ファイル | 内容 |
+| --- | --- |
+| `2026_Election_Yomiuri.ipynb` | 読売新聞の候補者ページを収集 |
+| `NHKelection.ipynb` | NHKの候補者データを収集 |
 
-- `_prefecture_all.csv`  
-  全都道府県の候補者データ
-
-- `_prefecture_all_party.csv`  
-  政党別に並び替えたデータ
-
----
-
-### proportional/（比例ブロックごとのファイル）
-
-- `_proportional_all.csv`  
-  全比例ブロックの候補者データ
-
-- `_proportional_all_party.csv`  
-  政党別に並び替えたデータ
-
----
-
-### all/（小選挙区と比例代表を統合）
-
-- `_all_candidates.csv`  
-  全候補者データ
-
-- `_all_candidates_party.csv`  
-  政党別に並び替えたデータ
-
----
-
-### question_mapping.csv（設問と回答の対応表）
-
-設問番号、質問文、選択肢の意味を記載しています。
-
----
-
-### cache_candidates/（候補者詳細データ）
-
-候補者詳細ページから取得したデータを、JSON形式で保存しています。  
-途中で収集が失敗した場合の再取得対策用です。
-
-- `[ハッシュ値].json`  
-  候補者ページURLをハッシュ化したファイル名。  
-  1人分の候補者データを保存します。
-
-
-## 2026 Japanese Election – Candidate Data Collection (Yomiuri)
-
-```markdown
-
-This project is a Jupyter Notebook designed to **collect, process, and analyze candidate information** related to the 2026 Japanese election using publicly available data sources (e.g., Yomiuri Shimbun candidate pages).
-
-The main goal of this notebook is to:
-- Automatically gather candidate detail page URLs  
-- Extract structured information about candidates  
-- Prepare the dataset for further political or media analysis  
-
-```
-
----
-
-## Requirements
-
-This notebook is designed to run in **Google Colab** or a standard Jupyter environment.
-
-### Python Version
-- Python 3.8+
-
-### Required Libraries
+Google Colab（推奨）またはローカルのJupyterで実行します（Python 3.8+）。
 
 ```bash
 pip install requests beautifulsoup4 pandas tqdm lxml
-````
-
-If using Google Colab, most dependencies are already installed.
-
----
-
-## Google Drive Integration (Colab)
-
-The notebook mounts Google Drive in order to:
-
-* Read input files
-* Save scraped or processed data
-
-```python
-from google.colab import drive
-drive.mount('/content/drive')
 ```
 
-Make sure your Drive structure matches the expected paths in the notebook.
+Colabでは Google Drive をマウントし、入出力を Drive に保存します。ノートブック内のパスが自分の Drive 構成と合っているか確認してください。
 
----
+### 処理の流れ
 
-## How to Use
+1. 候補者一覧ページから、各候補者の詳細ページURLを集める
+2. 詳細ページを取得してHTMLを解析する
+3. 氏名・政党・選挙区・年齢・経歴・アンケート回答などを抽出する
+4. DataFrameにまとめてCSVに書き出す
 
-### Step 1: Open the Notebook
+## 出力ファイル
 
-Open `2026_Election_Yomiuri.ipynb` in:
+### `prefecture/` — 都道府県（小選挙区）
 
-* Google Colab **(recommended)**
-  or
-* Local Jupyter Notebook
+- `_prefecture_all.csv` … 全都道府県の候補者データ
+- `_prefecture_all_party.csv` … 政党別に並び替えたもの
 
----
+### `proportional/` — 比例ブロック
 
-### Step 2: Install Dependencies (if needed)
+- `_proportional_all.csv` … 全比例ブロックの候補者データ
+- `_proportional_all_party.csv` … 政党別に並び替えたもの
 
-```python
-!pip install requests beautifulsoup4 pandas tqdm lxml
-```
+### `all/` — 小選挙区と比例代表を統合
 
----
+- `_all_candidates.csv` … 全候補者データ
+- `_all_candidates_party.csv` … 政党別に並び替えたもの
 
-### Step 3: Run Cells in Order
+### `question_mapping.csv` — 設問と回答の対応表
 
-The notebook performs the following operations:
+設問番号、質問文、選択肢の意味を記載しています。
 
-1. **Collect Candidate List URLs**
+### `cache_candidates/` — 候補者詳細のキャッシュ
 
-   * Accesses index pages containing candidate links
-   * Extracts URLs for each candidate profile
+候補者詳細ページから取得したデータをJSONで保存しています。収集が途中で失敗したときの再取得用です。
 
-2. **Fetch Candidate Detail Pages**
+- `[ハッシュ値].json` … 候補者ページURLをハッシュ化した名前で、1人分のデータを保存
 
-   * Sends HTTP requests
-   * Handles encoding and HTML parsing
+## 注意事項
 
-3. **Parse Candidate Information**
-   Typical fields include:
+- 公開されているウェブページのみを対象にしています。
+- サーバーに負荷をかけないよう、間隔を空けてアクセスしてください。
+- 実行前に対象サイトの robots.txt と利用規約を確認してください。
+- データは学術・非営利の研究目的での利用を想定しています。再利用する場合は出典を明記してください。
 
-   * Name
-   * Party
-   * Electoral district
-   * Age
-   * Career / background
-   * Policy statements (if available)
+## トラブルシューティング
 
-4. **Store Results**
+- **文字化け**: `response.encoding = response.apparent_encoding` を試す
+- **欠損値**: 未公開の項目があるため、`None` や空文字を必ず扱う
+- **接続エラー**: リトライを入れ、リクエスト間に `sleep` を挟む
 
-   * Data is saved into a Pandas DataFrame
-   * Can be exported as CSV
+## 作者
 
-Example:
-
-```python
-df.to_csv("candidates_2026.csv", index=False)
-```
-
----
-
-## Output Format
-
-The final dataset is structured as a table:
-
-| Name | Party | District | Age | Career | Source URL |
-| ---- | ----- | -------- | --- | ------ | ---------- |
-
-This format allows:
-
-* Statistical analysis
-* Visualization
-* Machine learning preprocessing
-* NLP on candidate statements
-
----
-
-## Legal & Ethical Notes
-
-* This notebook only accesses **publicly available web pages**
-* Scraping is performed at a moderate rate to avoid server overload
-* Always check the website’s robots.txt and terms of service
-* Data is for **research and educational purposes only**
-
----
-
-## Customization
-
-You can easily modify:
-
-* Target URLs
-* Fields to extract
-* Output file format
-
-For example, to add a new field:
-
-```python
-candidate_data["twitter"] = twitter_url
-```
-
----
-
-## Troubleshooting
-
-### Encoding Errors
-
-Try:
-
-```python
-response.encoding = response.apparent_encoding
-```
-
-### Missing Data
-
-* Some candidates do not publish all fields
-* Always handle `None` or empty strings
-
-### Connection Errors
-
-* Use retries
-* Add sleep between requests
-
----
-
-## License
-
-This project is released for **academic and non-commercial research use**.
-If you reuse the code, please cite the data source.
-
----
-
-## Author
-
-Created by: *ryouy*
-Project: 2026 Japanese Election Candidate Data Collection
+ryouy
