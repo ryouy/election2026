@@ -1,0 +1,1691 @@
+@charset "UTF-8";
+/**********************************
+// ヘッダーにリンクを追加
+**********************************/
+.uni-election-shugiin-51 .p-content-header {
+  grid-template-areas: "image image" "title action" "links inks" "lead lead";
+}
+.uni-election-shugiin-51 .election-region__links {
+  grid-area: links;
+  margin: 16px auto;
+}
+.uni-election-shugiin-51 .election-region__links a {
+  font-size: 20px;
+  line-height: 1;
+  color: #002b62;
+  padding: 14px 56px 14px 32px;
+  border: 2px solid #002b62;
+  display: inline-block;
+  border-radius: 5px;
+  background: url(/graphics/election/shugiin/51/images/region__arrow.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: right 32px center;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-region__links a {
+    font-size: 16px;
+  }
+}
+
+/**********************************
+// SPの時のみ表示させる
+**********************************/
+.uni-election-shugiin-51 .display-style-block_sp {
+  display: none;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .display-style-block_sp {
+    display: inline-block;
+  }
+}
+
+/**********************************
+// 共通
+**********************************/
+.uni-election-shugiin-51 {
+  margin-bottom: 50px;
+}
+.uni-election-shugiin-51 .p-category-latest-sec {
+  border-top: none;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 {
+    padding: 0 16px;
+  }
+  .uni-election-shugiin-51 .p-content-header {
+    margin: 0 0 16px;
+  }
+  .uni-election-shugiin-51 .p-content-header__action {
+    position: absolute;
+    top: -80px;
+    right: 0;
+  }
+  .uni-election-shugiin-51 .p-content-header__title {
+    line-height: 1.4;
+  }
+  .uni-election-shugiin-51 .p-category-organization {
+    margin: 16px 0 0;
+  }
+}
+.uni-election-shugiin-51 {
+  /**********************************
+  // パーツ
+  **********************************/
+}
+.uni-election-shugiin-51 .more {
+  width: 300px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  margin: 20px auto 40px;
+  border: 1px solid #00324e;
+  border-radius: 1px;
+}
+.uni-election-shugiin-51 .more a {
+  display: block;
+  font-size: 15px;
+  color: #00324e;
+  text-decoration: none;
+  background-image: url(/graphics/election/shugiin/51/images/arrow-left-white02.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: right 50px center;
+}
+.uni-election-shugiin-51 .more a:hover {
+  color: #ffffff;
+  background-color: #00324e;
+  background-image: url(/graphics/election/shugiin/51/images/image/arrow-left-white02.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: right 50px center;
+}
+.uni-election-shugiin-51 .fn-category-latest.p-category-latest {
+  margin-top: 20px;
+}
+.uni-election-shugiin-51.totop a:after {
+  background-image: url(/graphics/election/shugiin/51/images/arrow-green-white-top.png);
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  background-position: center right;
+  padding-right: 16px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note {
+  text-align: right;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note-menu_label {
+  display: inline-flex;
+  position: relative;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note-menu_label::before {
+  box-sizing: border-box;
+  display: block;
+  content: "";
+  background-image: url(/graphics/election/shugiin/51/images/note_icon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -18px;
+  top: 0;
+  bottom: 0;
+  background-repeat: no-repeat;
+  margin: auto;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note-menu_label button {
+  font-size: 12px;
+  line-height: 1;
+  font-weight: bold;
+  color: #405059;
+  border: none;
+  background: unset;
+  padding: 0;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note-menu_label button:hover {
+  cursor: pointer;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note-menu_label button .accordion__icon {
+  background-image: url(/graphics/election/shugiin/51/images/close.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 14px 14px;
+  padding-right: 18px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note-menu_label button[aria-expanded=true] > .accordion__icon {
+  background-image: url(/graphics/election/shugiin/51/images/close_on.png);
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion-panel__title {
+  font-weight: bold;
+  padding-left: 6px;
+  border-left: 4px solid #8c8c8c;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion-panel__title:not(:first-of-type) {
+  margin-top: 16px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion-panel__text:not(:first-of-type) {
+  margin-top: 8px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content {
+  overflow: hidden;
+  padding: 1em;
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: padding 0.5s, height 0.5s, opacity 0.5s, visibility 0.5s;
+  font-size: 12px;
+  text-align: left;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f0ebea;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content[aria-hidden=true] {
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .tosen {
+  background: url(/graphics/election/shugiin/51/images/tosen.png) no-repeat;
+  background-size: contain;
+  padding-left: 24px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .tokaku {
+  background: url(/graphics/election/shugiin/51/images/tokaku.png) no-repeat;
+  background-size: contain;
+  padding-left: 24px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .izutosen {
+  background: url(/graphics/election/shugiin/51/images/izutosen.png) no-repeat;
+  background-size: contain;
+  padding-left: 24px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .izutosen {
+    background-size: contain;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 370px) {
+  .uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .izutosen {
+    background-size: 18px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .shotosen {
+  background: url(/graphics/election/shugiin/51/images/shotosen.png) no-repeat;
+  background-size: contain;
+  padding-left: 30px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .shotokaku {
+  background: url(/graphics/election/shugiin/51/images/shotokaku.png) no-repeat;
+  background-size: contain;
+  padding-left: 30px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .hitosen {
+  background: url(/graphics/election/shugiin/51/images/hitosen.png) no-repeat;
+  background-size: contain;
+  padding-left: 30px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .hikaku {
+  background: url(/graphics/election/shugiin/51/images/hikaku.png) no-repeat;
+  background-size: contain;
+  padding-left: 30px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .kyobotsu {
+  background: url(/graphics/election/shugiin/51/images/kyobotsu@2x.png) no-repeat;
+  background-size: 16px;
+  padding-left: 20px;
+  background-position: left center;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.uni-election-shugiin-51 .election-shugiin-nav-note ul li {
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat {
+  margin-bottom: 30px;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_title {
+  font-size: 16px;
+  font-weight: bold;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list {
+  display: flex;
+  font-size: 14px;
+  margin-top: 4px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-winningseat_list {
+    white-space: nowrap;
+    flex-wrap: wrap;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item {
+  width: 9%;
+  text-align: center;
+  border-right: 1px solid #ffffff;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-winningseat_list--item {
+    width: 19%;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item:last-of-type {
+  border-right: none;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item span {
+  display: block;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item a {
+  color: #1e2428;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item .touha {
+  font-size: 12px;
+  line-height: 1;
+  color: #ffffff;
+  background-color: #2b6aaf;
+  padding: 7px 0;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item .touha:last-child {
+  border-right: 2px solid #000000;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item .touha001, .uni-election-shugiin-51 .election-shugiin-winningseat_list--item .touha087 {
+  background-color: #cc3433;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item .vote {
+  font-size: 20px;
+  height: 36px;
+  line-height: 36px;
+  padding: 3px 0 0 4px;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item.title .touha {
+  background-color: #ffffff;
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item.title .vote {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-winningseat_list--item.title .vote {
+    padding: 3px 8px 0 8px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-winningseat_list--item.yc81857, .uni-election-shugiin-51 .election-shugiin-winningseat_list--item.yc84851, .uni-election-shugiin-51 .election-shugiin-winningseat_list--item.yc84049 {
+  font-size: 12px;
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav {
+  width: 27%;
+  font-size: 16px;
+  font-size: 1rem;
+  margin-top: 20px;
+  position: relative;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav {
+    width: 100%;
+    order: 1;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav_wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav_wrap {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav_wrap #yamap_target {
+    width: 100%;
+    margin-top: 20px;
+    order: 2;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav_accordion {
+  width: 73%;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav_accordion {
+    width: 100%;
+    order: 2;
+    border: 1px solid #002B61;
+    margin: 20PX auto 10PX;
+    padding: 8px;
+  }
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav_accordion #yamap_target {
+    display: none;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav_accordion__title {
+  display: none;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav_accordion__title {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #002B61;
+    text-align: center;
+    position: relative;
+  }
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav_accordion__title:after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background-image: url(../images/yamap_open.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-left: 2px;
+  }
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav_accordion__title.on:after {
+    background-image: url(../images/yamap_close.png);
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor {
+  display: flex;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  text-align: right;
+  padding-right: 16px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding-bottom: 12px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor--yc {
+  display: none;
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor li {
+  width: 50%;
+  line-height: 1;
+  padding-right: 10px;
+  position: relative;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor li {
+    width: auto;
+    margin-right: 24px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor li:nth-child(n+3) {
+  margin-top: 8px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor li:nth-child(n+3) {
+    margin-top: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor li:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: -6px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #CCCCCC;
+  border-right: 2px solid #CCCCCC;
+  transform: rotate(135deg);
+  display: block;
+  content: "";
+}
+.uni-election-shugiin-51 .election-shugiin-common-districts-nav__anchor li a {
+  color: #1e2428;
+}
+.uni-election-shugiin-51 {
+  /*********************************
+  // 氏名柱上のタブメニュー
+  *********************************/
+}
+.uni-election-shugiin-51 .election-shugiin-head__nav {
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+  margin-top: 60px;
+}
+.uni-election-shugiin-51 .election-shugiin-head__nav.top {
+  margin-top: 0;
+}
+.uni-election-shugiin-51 .election-shugiin-head__nav a {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #002b62;
+  background-color: #e9eef4;
+  box-sizing: border-box;
+}
+.uni-election-shugiin-51 .election-shugiin-head__nav a:before {
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+}
+.uni-election-shugiin-51 .election-shugiin-head__nav .shimen {
+  width: 175px;
+  text-align: center;
+  background-color: #e9eef4;
+}
+.uni-election-shugiin-51 .election-shugiin-head__nav .shimen:after {
+  content: "";
+  display: inline-block;
+  width: 34px;
+  height: 16px;
+  background: url(/graphics/election/shugiin/51/images/lock.jpg), url(/graphics/election/shugiin/51/images/arrow-green-white-right.png);
+  background-size: 12px 12px, 14px 14px;
+  background-position: right 17px center, right 0px center;
+  background-repeat: no-repeat;
+}
+.uni-election-shugiin-51 .election-shugiin-tab-list {
+  display: flex;
+  width: calc(100% - 175px);
+}
+.uni-election-shugiin-51 .election-shugiin-tab-list_item {
+  width: calc((100% - 16px) / 3);
+  margin-right: 8px;
+}
+.uni-election-shugiin-51 .election-shugiin-tab-list_item a:after {
+  background: url(/graphics/election/shugiin/51/images/arrow-green-white-bottom.png) no-repeat;
+  background-size: 15px 15px;
+  content: "";
+  margin-left: 3px;
+  height: 15px;
+  width: 15px;
+}
+.uni-election-shugiin-51 .election-shugiin-tab-list_item.active a {
+  background-color: #002b62;
+  color: #fff;
+}
+.uni-election-shugiin-51 .election-shugiin-tab-list_item.active a:after {
+  content: none;
+}
+.uni-election-shugiin-51 .election-shugiin-tab-list_item.totop a:after {
+  background: url(/graphics/election/shugiin/51/images/arrow-green-white-top.png) no-repeat;
+  background-size: 15px 15px;
+  content: "";
+  margin-left: 3px;
+  height: 15px;
+  width: 15px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-head__title {
+    font-size: 15px;
+  }
+  .uni-election-shugiin-51 .election-shugiin-head__nav {
+    flex-direction: column;
+  }
+  .uni-election-shugiin-51 .election-shugiin-head__nav .shimen {
+    font-size: 14px;
+    width: 100%;
+    height: 26px;
+    justify-content: flex-end;
+    padding-right: 32px;
+    background-size: 12px 12px, 13px 13px;
+    background-position: right 17px center, right 0 center;
+    background-color: #ffffff;
+    padding-right: 0;
+  }
+  .uni-election-shugiin-51 .election-shugiin-tab-list {
+    width: 100%;
+  }
+  .uni-election-shugiin-51 .election-shugiin-tab-list_item {
+    width: calc((100% - 6px) / 3);
+    margin-right: 3px;
+  }
+  .uni-election-shugiin-51 .election-shugiin-tab-list_item:last-child {
+    margin-right: 0;
+  }
+  .uni-election-shugiin-51 .election-shugiin-tab-list_item a {
+    height: 40px;
+    line-height: 1.2;
+    text-align: center;
+  }
+}
+.uni-election-shugiin-51 {
+  /*********************************
+  // 氏名柱
+  *********************************/
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section {
+  margin: 30px 0 0;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section:first-of-type {
+  margin-top: 20px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section:last-of-type {
+  margin-bottom: 6px;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 8px solid #002b62;
+  padding-left: 8px;
+  position: relative;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head__address {
+  width: 77%;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-common-section-head__address {
+    width: 60%;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head__title {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head__title--link {
+  color: #1e2428;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head-status__kouhosu {
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head__city {
+  font-size: 14px;
+  line-height: 1;
+  margin-top: 10px;
+  min-height: 10px;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head-questionary {
+  position: absolute;
+  right: 0;
+  top: -5px;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head-questionary a {
+  font-size: 14px;
+  color: #002b62;
+  display: inline-flex;
+  align-items: center;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head-questionary a:after {
+  background: url(/graphics/election/shugiin/51/images/arrow-green-white-bottom.png) no-repeat;
+  background-size: 15px 15px;
+  content: "";
+  margin-left: 2px;
+  height: 15px;
+  width: 15px;
+}
+.uni-election-shugiin-51 .election-shugiin-common-section-head-questionary.totop a:after {
+  background: url(/graphics/election/shugiin/51/images/arrow-green-white-top.png) no-repeat;
+  background-size: 15px 15px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header {
+  font-size: 12px;
+  background-color: #e9eef4;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px 0 2px;
+  position: relative;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 8px 10px;
+    position: static;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header__name {
+  margin-left: 66px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header__name {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header__age {
+  margin-left: 171px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header__age {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header__party {
+  margin-left: 31px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header__party {
+    margin-left: 0;
+    line-height: unset;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header__party > .suisen {
+  font-size: 11px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header__oldnew {
+  margin-left: 30px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header__oldnew {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header__number {
+  width: 24px;
+  margin-left: 31px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header__number {
+    line-height: initial;
+    width: auto;
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header__career {
+  margin-left: 87px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header__career {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header__duplication {
+  position: absolute;
+  right: 2%;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header__duplication {
+    margin-left: 0;
+    position: static;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data {
+  display: flex;
+  flex: auto;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #002b62;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-link {
+  text-decoration: none;
+  font-weight: 400;
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-link a {
+  height: 100%;
+  width: auto;
+  display: flex;
+  align-items: center;
+  color: #333;
+  text-decoration: none;
+  font-weight: 400;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-link a:hover {
+  background-color: #f4f6fa;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-link a:focus {
+  outline: auto;
+  outline-offset: -1px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data__photo {
+  text-align: center;
+  position: relative;
+  margin: 10px 0;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data__photo figure {
+  width: 56px;
+  height: 66px;
+  background-color: #dddddd;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info {
+  flex: auto;
+  display: flex;
+  margin: 0 10px;
+  box-sizing: border-box;
+  align-items: center;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail {
+    flex-wrap: wrap;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__name {
+  width: 184px;
+  font-size: 18px;
+  font-weight: bold;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__name {
+    width: 100%;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__age {
+  margin-left: 8px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__age {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__party {
+  width: 42px;
+  margin-left: 18px;
+  text-align: center;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__party {
+    width: auto;
+    margin-left: 14px;
+    line-height: unset;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__party > .suisen {
+  font-size: 11px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__party:has(.suisen) {
+  line-height: 1;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__oldnew {
+  margin-left: 27px;
+  margin-right: 36px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__oldnew {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__number-of-elected {
+  min-width: 30px;
+  text-align: center;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__number-of-elected {
+    min-width: none;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__career {
+  margin-left: 33px;
+  max-width: 168px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__career {
+    margin-left: 0;
+    width: 100%;
+    max-width: none;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__defeated {
+  width: 100%;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #5F5F5F;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-info-detail__defeated {
+    margin-top: 2px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right {
+  align-items: center;
+  align-self: center;
+  position: relative;
+  flex: 0 0 54px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right {
+    flex: 0 0 62px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right a {
+  color: #1e2428;
+  font-weight: bold;
+  height: 86px;
+  position: relative;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right a:before {
+  content: "";
+  width: 1px;
+  height: 76px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: #a9b8c9;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right-duplication {
+  color: #1e2428;
+  font-size: 14px;
+  font-weight: normal;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0;
+  width: 54px;
+  text-align: center;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right-duplication {
+    width: 62px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right-duplication:hover {
+  background-color: #f4f6fa;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right-duplication span {
+  line-height: 1.2;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data-right-duplication-title {
+  display: none;
+}
+.uni-election-shugiin-51 .fn-category-time-series.p-category-time-series {
+  margin-top: 30px;
+}
+.uni-election-shugiin-51 {
+  /*********************************
+  // 氏名柱（比例のみ）
+  *********************************/
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-common-section-head {
+  display: block;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-common-section-head-status__kouhosu {
+  margin-left: 0;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-common-section-head-info_list {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-common-section-head-info_list {
+    flex-wrap: wrap;
+    width: 80%;
+  }
+}
+@media screen and (max-width: 390px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-common-section-head-info_list {
+    width: 75%;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-common-section-head-info_item {
+  margin-right: 16px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-common-section-head-info_item span {
+  font-size: 14px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-header {
+    padding: 8px 10px;
+    justify-content: flex-end;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-header__name {
+  margin-left: 108px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-header__name {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-header__prioritized {
+  display: none;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-header__duplication {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-data-prioritized {
+  font-size: 14px;
+  width: 32px;
+  height: 66px;
+  background-color: #e9eef4;
+  margin-right: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-data-info-detail__oldnew {
+  margin-left: 32px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-data-right-single {
+  width: 54px;
+  text-align: center;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-data-right-single {
+    width: 62px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-common-faction-nav__anchor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: 24px;
+}
+.uni-election-shugiin-51 .election-shugiin-common-faction-nav__anchor li {
+  position: relative;
+}
+.uni-election-shugiin-51 .election-shugiin-common-faction-nav__anchor li:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: -10px;
+  width: 4px;
+  height: 4px;
+  border-top: 2px solid #CCCCCC;
+  border-right: 2px solid #CCCCCC;
+  transform: rotate(135deg);
+  display: block;
+  content: "";
+}
+.uni-election-shugiin-51 .election-shugiin-common-faction-nav__anchor a {
+  color: #1e2428;
+}
+.uni-election-shugiin-51 {
+  /*********************************
+  開票用
+  *********************************/
+}
+.uni-election-shugiin-51 .result {
+  padding-left: 42px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .result {
+    padding-left: 40px;
+  }
+}
+.uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-detail {
+  flex-wrap: wrap;
+}
+.uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-detail__name {
+  width: 128px;
+  line-height: 1.2;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-detail__name {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-detail__career {
+    display: none;
+  }
+}
+.uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-number-of-votes {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-number-of-votes {
+    margin-top: 0;
+  }
+}
+.uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-number-of-votes__value {
+  line-height: 1.2;
+  width: 145px;
+  min-height: 20px;
+  display: flex;
+  font-size: 14px;
+}
+.uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-number-of-votes__value .number {
+  color: #5F5F5F;
+  flex: 0 1 50%;
+  font-weight: 700;
+}
+.uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-number-of-votes__graph {
+  background: #e6e6e6;
+  height: 10px;
+  width: 125px;
+}
+.uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-number-of-votes__graph__bar {
+  height: 10px;
+  background: #5f5f5f;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .result .election-shugiin-profile-section-person-data-info-number-of-votes__graph {
+    display: none;
+  }
+}
+.uni-election-shugiin-51 .result__tokaku {
+  background-color: #fbf3f3;
+}
+.uni-election-shugiin-51 .result__tokaku .election-shugiin-profile-section-person-data-info-number-of-votes__graph__bar {
+  background: #c72d23;
+}
+.uni-election-shugiin-51 .result__tokaku .number {
+  color: #c72d23 !important;
+}
+.uni-election-shugiin-51 .result__tosen {
+  background-color: #fbf3f3;
+}
+.uni-election-shugiin-51 .result__tosen .election-shugiin-profile-section-person-data-info-number-of-votes__graph__bar {
+  background: #c72d23;
+}
+.uni-election-shugiin-51 .result__tosen .number {
+  color: #c72d23 !important;
+}
+.uni-election-shugiin-51 .result__hitosen {
+  background-color: #fbf3f3;
+}
+.uni-election-shugiin-51 .result__hitosen .election-shugiin-profile-section-person-data-info-number-of-votes__graph__bar {
+  background: #5f5f5f;
+}
+.uni-election-shugiin-51 .result__shotosen {
+  background-color: #fbf3f3;
+}
+.uni-election-shugiin-51 .result__shotosen .result__shotosen .election-shugiin-profile-section-person-data-info-number-of-votes__graph__bar {
+  background: #5f5f5f;
+}
+.uni-election-shugiin-51 .election-icon {
+  display: none;
+  text-indent: -9999px;
+}
+.uni-election-shugiin-51 .election-icon__tosen, .uni-election-shugiin-51 .election-icon__tokaku, .uni-election-shugiin-51 .election-icon__hitosen, .uni-election-shugiin-51 .election-icon__izutosen, .uni-election-shugiin-51 .election-icon__hikaku, .uni-election-shugiin-51 .election-icon__himekaku, .uni-election-shugiin-51 .election-icon__shotokaku, .uni-election-shugiin-51 .election-icon__shotosen, .uni-election-shugiin-51 .election-icon__legal-num-v, .uni-election-shugiin-51 .election-icon__confiscation {
+  display: block;
+  height: 30px;
+  width: 30px;
+  left: 6px;
+  top: 26px;
+  position: absolute;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-icon__tosen, .uni-election-shugiin-51 .election-icon__tokaku, .uni-election-shugiin-51 .election-icon__hitosen, .uni-election-shugiin-51 .election-icon__izutosen, .uni-election-shugiin-51 .election-icon__hikaku, .uni-election-shugiin-51 .election-icon__himekaku, .uni-election-shugiin-51 .election-icon__shotokaku, .uni-election-shugiin-51 .election-icon__shotosen, .uni-election-shugiin-51 .election-icon__legal-num-v, .uni-election-shugiin-51 .election-icon__confiscation {
+    left: 7px;
+  }
+}
+.uni-election-shugiin-51 .election-icon__tosen {
+  background: url(/graphics/election/shugiin/51/images/tosen.png) no-repeat;
+  background-size: 100%;
+}
+.uni-election-shugiin-51 .election-icon__tokaku {
+  background: url(/graphics/election/shugiin/51/images/tokaku.png) no-repeat;
+  background-size: 100%;
+}
+.uni-election-shugiin-51 .election-icon__hitosen {
+  background: url(/graphics/election/shugiin/51/images/hitosen.png) no-repeat;
+  background-size: 100%;
+  top: 32px;
+}
+.uni-election-shugiin-51 .election-icon__izutosen {
+  background: url(/graphics/election/shugiin/51/images/izutosen.png) no-repeat;
+  background-size: 100%;
+}
+.uni-election-shugiin-51 .election-icon__hikaku, .uni-election-shugiin-51 .election-icon__himekaku {
+  background: url(/graphics/election/shugiin/51/images/hikaku.png) no-repeat;
+  background-size: 100%;
+  top: 32px;
+}
+.uni-election-shugiin-51 .election-icon__shotokaku {
+  background: url(/graphics/election/shugiin/51/images/shotokaku.png) no-repeat;
+  background-size: 100%;
+  top: 32px;
+}
+.uni-election-shugiin-51 .election-icon__shotosen {
+  background: url(/graphics/election/shugiin/51/images/shotosen.png) no-repeat;
+  background-size: 100%;
+  top: 32px;
+}
+.uni-election-shugiin-51 .election-icon__legal-num-v {
+  background: url(/graphics/election/shugiin/51/images/houtei.png) no-repeat;
+  background-size: 100%;
+  width: 15px;
+  height: 15px;
+  top: 36px;
+  left: 14px;
+}
+.uni-election-shugiin-51 .election-icon__confiscation {
+  background: url(/graphics/election/shugiin/51/images/kyobotsu.png) no-repeat;
+  background-size: 100%;
+}
+.uni-election-shugiin-51 .election-shugiin-head-info__status {
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 1px solid #000000;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-head-info__status {
+    padding: 4px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-data.result__tosen a:hover, .uni-election-shugiin-51 .election-shugiin-profile-section-person-data.result__shotosen a:hover, .uni-election-shugiin-51 .election-shugiin-profile-section-person-data.result__hitosen a:hover {
+  background-color: #f8e9e9;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result {
+  padding-left: 0;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result {
+    padding: 8px 10px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__name {
+  margin-left: 114px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__name {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__age {
+  margin-left: 111px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__age {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__career {
+  margin-left: 57px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__career {
+    margin-left: 0;
+    display: none;
+  }
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__duplication {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__name {
+  margin-left: 154px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-section.election-shugiin-yc .election-shugiin-profile-section-person-header.result .election-shugiin-profile-section-person-header__name {
+    margin-left: 0;
+  }
+}
+.uni-election-shugiin-51 {
+  /*********************************
+  選挙区プロフィル
+  *********************************/
+}
+.uni-election-shugiin-51 .election-shugiin-profile__inner {
+  margin-top: 30px;
+  position: relative;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__inner--duplicate_wrap {
+  font-size: 14px;
+  width: 82px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid #002B62;
+  border-radius: 2px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__inner--duplicate_wrap.display-style-block_pc {
+  display: block;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile__inner--duplicate_wrap.display-style-block_pc {
+    display: none;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile__inner--duplicate_wrap.display-style-block_sp {
+  display: none;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile__inner--duplicate_wrap.display-style-block_sp {
+    display: block;
+    position: static;
+    margin-top: 10px;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile__inner--duplicate_title {
+  color: #fff;
+  font-weight: bold;
+  background-color: #002B62;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__inner--duplicate_title + a {
+  display: block;
+  padding: 5px 18px;
+  color: #1e2428;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__inner--duplicate_area {
+  line-height: 1.2;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__inner_col {
+  display: flex;
+  justify-content: space-between;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-status {
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-status_title {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 6px;
+  background: #E9EEF4;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-status_title.profile-keireki {
+  display: inline-block;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-status__wrap {
+  margin-right: 10px;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-status__wrap .display-style-block_sp {
+  display: none;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-status__wrap .display-style-block_sp {
+    display: block;
+  }
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-status__wrap.profile-age {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-status__wrap.profile-party {
+    width: 100%;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile-status__wrap.profile-keireki {
+  width: 100%;
+  display: block;
+}
+.uni-election-shugiin-51 .election-shugiin-profile-status.profile-keireki {
+  min-width: 520px;
+  margin-top: 5px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile-status.profile-keireki {
+    min-width: auto;
+  }
+}
+.uni-election-shugiin-51 .election-shugiin-profile__photo figure {
+  width: 170px;
+  height: 200px;
+  background: #eaeaea;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__name {
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__name .name {
+  font-size: 35px;
+  font-weight: bold;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__name .name span {
+  margin-left: 1rem;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__name rt {
+  font-size: 11px;
+}
+.uni-election-shugiin-51 .election-shugiin-profile__detail {
+  margin-left: 20px;
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile__detail {
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: 599px) {
+  .uni-election-shugiin-51 .election-shugiin-profile__photo figure {
+    width: 118px;
+    height: 140px;
+  }
+  .uni-election-shugiin-51 .election-shugiin-profile__name {
+    margin-bottom: 8px;
+  }
+  .uni-election-shugiin-51 .election-shugiin-profile__name rb {
+    font-size: 25px;
+  }
+}
+
+/*** ▼▼▼　以下uni-election-shugiin-51配下でなくても読み込まれる必要があるもの　▼▼▼
+・共通ヘッダー（ヘッダーwidget）
+・衆選院TOPへバナー（フッターwidget内）
+・マップ（TOPのタブの中・フッターwidgetなどで使用）
+・右カラム
+*/
+.election-shugiin-head {
+  position: relative;
+}
+.election-shugiin-head .p-content-header {
+  margin-top: 16px;
+}
+.election-shugiin-head .p-content-header__lead {
+  margin-top: 8px;
+  background-color: #f0f3f5;
+}
+.election-shugiin-navi {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+.election-shugiin-navi-title {
+  margin-right: 6px;
+}
+.election-shugiin-navi-title a {
+  display: block;
+}
+.election-shugiin-navi-title img {
+  display: block;
+  width: 166px;
+  height: auto;
+}
+@media screen and (max-width: 370px) {
+  .election-shugiin-navi-title img {
+    width: 140px;
+  }
+}
+.election-shugiin-navi-container {
+  width: 100%;
+  height: 29px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: #0b3a6e;
+  padding: 0 14px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+.election-shugiin-navi-contents {
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 12px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+.election-shugiin-navi-contents:last-child {
+  margin-right: 0;
+}
+.election-shugiin-navi-contents a {
+  color: #ffffff;
+  display: block;
+  background: url(/media/2023/06/arrow-left-white-blue.png);
+  background-size: 14px;
+  background-repeat: no-repeat;
+  padding-right: 16px;
+  background-position: right 0px center;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-navi {
+    flex-direction: column;
+  }
+  .election-shugiin-navi_wrap {
+    padding: 0 10px;
+  }
+  .election-shugiin-navi-container {
+    height: 32px;
+  }
+  .election-shugiin-navi-title {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 10px 0 10px;
+    float: none;
+    text-align: center;
+  }
+  .election-shugiin-navi-contents a {
+    padding: 5px 0;
+    padding-right: 14px;
+  }
+}
+
+.article-content .election-shugiin-navi {
+  margin-bottom: 24px;
+}
+@media screen and (max-width: 599px) {
+  .article-content .election-shugiin-navi {
+    width: calc(100% - 32px);
+    margin: 0 auto 24px;
+  }
+}
+
+.election-shugiin-faction {
+  margin: 30px 0;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction {
+    padding: 0;
+  }
+}
+.election-shugiin-faction-statistics {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  line-height: 0.6;
+  font-size: 14px;
+  background: #fff;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-statistics {
+    width: calc(100% - 32px);
+    margin: auto;
+  }
+}
+.election-shugiin-faction-statistics th {
+  padding: 16px 0;
+  text-align: center;
+  border: 1px solid #c3c3c3;
+  font-weight: 700;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-statistics th {
+    padding: 7px 0;
+  }
+}
+.election-shugiin-faction-statistics th:first-child {
+  font-weight: 700;
+  border-left: none;
+}
+.election-shugiin-faction-statistics th:last-child {
+  border-right: none;
+}
+.election-shugiin-faction-statistics td {
+  padding: 9px 0;
+  text-align: center;
+  border: 1px solid #c3c3c3;
+  width: 60px;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-statistics td {
+    width: auto;
+  }
+}
+.election-shugiin-faction-statistics td:first-child {
+  font-weight: 700;
+  border-left: none;
+  width: 80px;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-statistics td:first-child {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.1;
+    width: 55px;
+  }
+}
+.election-shugiin-faction-statistics td:last-child {
+  border-right: none;
+}
+.election-shugiin-faction-statistics__total-winners {
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #bcbcbc;
+  font-weight: 700;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-statistics__total-winners td:first-child {
+    font-weight: 700 !important;
+  }
+}
+.election-shugiin-faction-statistics__advertisement {
+  border-top: 2px solid #bcbcbc;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-statistics__advertisement__koji {
+    padding: 9px 5px !important;
+  }
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-statistics__toha {
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    margin: auto;
+    line-height: 1em;
+  }
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-statistics__toha span {
+    text-combine-upright: all;
+  }
+}
+.election-shugiin-faction-capacity {
+  text-align: right;
+  font-size: 14px;
+  padding-top: 5px;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-capacity {
+    margin-right: 16px;
+  }
+}
+.election-shugiin-faction-caution {
+  font-size: 10px;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-faction-caution {
+    margin: 0 10px;
+  }
+}
+.election-shugiin__common-head {
+  border-bottom: none;
+  border-top: none;
+  color: #0b3a6e;
+  color: #00324e;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 22px;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-top: 40px;
+  padding: 0.8rem 0;
+}
+.election-shugiin__common-head:before {
+  background: linear-gradient(0, #0b3a6e, #104682);
+  border-radius: 2px;
+  content: "";
+  display: inline-block;
+  height: 22px;
+  margin-right: 4px;
+  vertical-align: bottom;
+  width: 22px;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin__common-head {
+    margin-left: 16px;
+    max-width: calc(100% - 32px);
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .page-feature-titlelist .election-shugiin-51-header {
+    padding: 0 16px;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .page-election-shugiin-yosoulist .election-shugiin-51-header,
+  .page-election-shugiin-2024YA .election-shugiin-51-header,
+  .page-election-shugiin-2024YAprofile .election-shugiin-51-header,
+  .page-election-shugiin-2024YAsenkyoku .election-shugiin-51-header,
+  .page-election-shugiin-2024YC .election-shugiin-51-header,
+  .page-election-shugiin-2024YCprofile .election-shugiin-51-header {
+    padding: 0 16px;
+  }
+}
+
+.page-election-shugiin .election-shugiin-past-link_wrap,
+.page-election-shugiin-2026YA .election-shugiin-past-link_wrap,
+.page-election-shugiin-2026YAprofile .election-shugiin-past-link_wrap,
+.page-election-shugiin-2026YAsenkyoku .election-shugiin-past-link_wrap,
+.page-election-shugiin-2026YC .election-shugiin-past-link_wrap,
+.page-election-shugiin-2026YCprofile .election-shugiin-past-link_wrap,
+.page-election-shugiin-2024candidates .election-shugiin-past-link_wrap,
+.page-election-shugiin-2026winners .election-shugiin-past-link_wrap,
+.page-election-shugiin-research .election-shugiin-past-link_wrap {
+  display: none;
+}
+
+.annotation {
+  font-size: 12px;
+  margin-top: -16px;
+}
+@media screen and (max-width: 599px) {
+  .annotation {
+    margin-top: -12px;
+  }
+}
+
+.uni-election-shugiin-51 .reload-btn-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+.uni-election-shugiin-51 .reload-btn {
+  position: relative;
+  right: initial;
+  top: initial;
+}

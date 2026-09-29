@@ -1,0 +1,55 @@
+/* 衆院選TOPでは過去からの誘導枠を表示させない */
+.page-election-shugiin .election-shugiin-past-link_wrap,
+.page-election-shugiin-2026 .election-shugiin-past-link_wrap,
+.page-election-shugiin-2026candidates .election-shugiin-past-link_wrap {
+  display:none;
+}
+
+
+/* 比例獲得議席 サファリだけ */
+ /* 最新のsafari用 */
+ _::-webkit-full-page-media, _:future, :root .uni-election-shugiin-51 .election-shugiin-winningseat_list--item .touha {
+	font-size: 12px;
+ }
+_::-webkit-full-page-media, _:future, :root .election-shugiin-51-sidebar .election-shugiin-electionMap__item#ya-hokkaido a {
+  padding: 4px 0;
+}
+_::-webkit-full-page-media, _:future, :root .election-shugiin-51-sidebar .election-shugiin-electionMap__item#ya-kanagawa a {
+  padding: 4px 0;
+}
+_::-webkit-full-page-media, _:future, :root .election-shugiin-51-sidebar .election-shugiin-electionMap__item#ya-wakayama a {
+  padding: 4px 0;
+}
+_::-webkit-full-page-media, _:future, :root .election-shugiin-51-sidebar .election-shugiin-electionMap__item#ya-kagoshima a {
+  padding: 4px 0;
+}
+ /* 古いsafari用 */
+ @media screen and (-webkit-min-device-pixel-ratio:0) {
+	::i-block-chrome, .uni-election-shugiin-51 .election-shugiin-2024-winningseat_list--item .touha {
+		font-size: 12px;
+	}
+	::i-block-chrome, .election-shugiin-51-sidebar .election-shugiin-electionMap__item#ya-hokkaido a {
+		padding: 4px 0;
+	}
+	::i-block-chrome, .election-shugiin-51-sidebar .election-shugiin-electionMap__item#ya-kanagawa a {
+		padding: 4px 0;
+	}
+	::i-block-chrome, .election-shugiin-51-sidebar .election-shugiin-electionMap__item#ya-wakayama a {
+		padding: 4px 0;
+	}
+	::i-block-chrome, .election-shugiin-51-sidebar .election-shugiin-electionMap__item#ya-kagoshima a {
+		padding: 4px 0;
+	}
+}
+
+
+@media screen and (max-width: 599px) {
+    _::-webkit-full-page-media, _:future, :root .uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .izutosen {
+    background-size: 18px;
+   }
+   @media screen and (-webkit-min-device-pixel-ratio:0) {
+    ::i-block-chrome, .uni-election-shugiin-51 .election-shugiin-nav-note .accordion__content .izutosen{
+      background-size: 18px;
+    }
+   }
+}

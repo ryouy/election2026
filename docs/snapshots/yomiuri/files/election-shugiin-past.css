@@ -1,0 +1,96 @@
+.election-shugiin-past-link {
+  width: 48%;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-past-link {
+    width: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+}
+.election-shugiin-past-link_wrap {
+  width: 100%;
+  max-width: 650px;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  background-color: #012B61;
+  padding: 0 8px 0 0;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-past-link_wrap {
+    width: calc(100% - 32px);
+    flex-direction: column;
+    padding: 2px 8px 8px 0;
+  }
+}
+.election-shugiin-past-link_top {
+  background: url(/graphics/election/shugiin/common/images/shugiin-pastpage-banner.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 52%;
+  height: 0;
+  padding-top: 9.1%;
+  position: relative;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-past-link_top {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding-top: 18.5%;
+  }
+}
+.election-shugiin-past-link_top a {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.election-shugiin-past-link_list {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  margin-left: 6px;
+  padding: 8px 6px 8px 10px;
+  border-radius: 4px;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-past-link_list {
+    padding: 10px 20px 0;
+  }
+}
+.election-shugiin-past-link_item {
+  margin-right: 5%;
+  line-height: 1.5;
+}
+@media screen and (max-width: 599px) {
+  .election-shugiin-past-link_item {
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+}
+.election-shugiin-past-link_item:nth-child(3n) {
+  margin-right: 0;
+}
+@media screen and (max-width: 740px) {
+  .election-shugiin-past-link_item:nth-child(3n) {
+    margin-right: 5%;
+  }
+}
+.election-shugiin-past-link_item a {
+  font-size: 17px;
+  color: #1e2428;
+  font-weight: bold;
+  background: url(/graphics/election-shugiin-2024/images/arrow-right-shugiin-white.png);
+  background-repeat: no-repeat;
+  background-size: 17px;
+  background-position: right center;
+  padding-right: 20px;
+}/*# sourceMappingURL=election-shugiin-past.css.map */

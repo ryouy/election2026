@@ -1,0 +1,1 @@
+(()=>{var e;(e=jQuery)(".js-news-nav .subnav").on({mouseenter:function(){e(this).addClass("active")},mouseleave:function(){e(this).removeClass("active")}})})();

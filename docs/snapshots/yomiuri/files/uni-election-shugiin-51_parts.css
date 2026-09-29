@@ -1,0 +1,331 @@
+@charset "UTF-8";
+/* ▼▼▼ モーダル ▼▼▼ */
+.election-shugiin-51-wrapper {
+  z-index: 9000;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: hsla(0, 0%, 100%, 0.9);
+}
+.election-shugiin-51-wrapper-form {
+  width: 795px;
+  max-height: 835px;
+  background-color: #F0F0F0;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  overflow-y: scroll;
+}
+.election-shugiin-51-wrapper--show {
+  display: block;
+  animation: headerCatenav 0.3s linear 0s 1 normal;
+}
+
+@keyframes headerCatenav {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* 閉じる */
+.election-shugiin-51-wrapper__close {
+  display: block;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.js-search__close {
+  font-size: 0;
+  background: url(/graphics/election-shugiin-51/images/icon-close.png);
+  width: 35px;
+  height: 35px;
+  border: none;
+  background-size: contain;
+}
+
+.election-shugiin-51-wrapper {
+  /* 囲み */
+  /* タイトル */
+}
+.election-shugiin-51-wrapper-inner {
+  width: 100%;
+  margin: auto;
+  padding: 30px 30px 0;
+  background: #F0F0F0;
+}
+.election-shugiin-51-wrapper-form {
+  /* 検索 */
+}
+.election-shugiin-51-wrapper-form_title {
+  color: #1e2428;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 30px;
+}
+.election-shugiin-51-wrapper-form .election-shugiin-51-common-prefecture-nav-title,
+.election-shugiin-51-wrapper-form .election-shugiin-51-common-party-proportion-nav-title {
+  text-align: left;
+}
+.election-shugiin-51-wrapper-form .election-shugiin-51-common-party-proportion-nav {
+  margin-top: 0;
+  padding: 40px 20px 20px;
+}
+.election-shugiin-51-wrapper-form .election-shugiin-51-common-prefecture-nav {
+  padding: 40px 20px 0;
+}
+.election-shugiin-51-wrapper-form .election-shugiin-51-common-prefecture-nav__list ul:last-of-type {
+  margin-bottom: 0;
+}
+.election-shugiin-51-wrapper-form_wrap:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* 検索 */
+.keyword {
+  font-size: 18px;
+  width: 423px;
+  height: 50px;
+  border: 1px solid #1E2428;
+  box-sizing: border-box;
+  padding-left: 40px;
+  margin-right: 5px;
+  background-image: url(./graphics/election-shugiin-51/images/icon-search.png);
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: left 10px center;
+}
+.keyword:hover {
+  cursor: pointer;
+}
+
+.sbmt {
+  width: 80px;
+  height: 50px;
+  background: #1E2428;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+.sbmt:hover {
+  cursor: pointer;
+}
+
+/* 50音順一覧 */
+.election-shugiin-51-wrapper-form_botton {
+  border: 3px solid #c3c3c3;
+  width: 230px;
+  margin: 26px auto 0;
+  border-radius: 50px;
+  background: #ffffff;
+}
+.election-shugiin-51-wrapper-form_botton a {
+  display: block;
+  color: #1e2428;
+  text-decoration: none;
+  padding: 16px 46px;
+}
+.election-shugiin-51-wrapper-form_botton:hover {
+  opacity: 0.7;
+}
+
+/* モーダル背景固定 */
+body.fixed {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+
+@media screen and (max-width: 599px) {
+  .election-shugiin-51-wrapper-form {
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+  }
+  .election-shugiin-51-wrapper-form_wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .election-shugiin-51-wrapper-form_title {
+    font-size: 20px;
+  }
+  .election-shugiin-51-wrapper-form_botton {
+    margin: 20px auto 0;
+  }
+  .election-shugiin-51-wrapper__close {
+    top: 15px;
+    right: 10px;
+  }
+  .election-shugiin-51-wrapper button.js-search__close {
+    width: 25px;
+    height: 25px;
+  }
+  .election-shugiin-51-wrapper-inner {
+    width: calc(100% - 32px);
+    margin: auto;
+    padding: 25px 0 20px;
+  }
+  .election-shugiin-51-wrapper .keyword {
+    font-size: 14px;
+    width: calc(100% - 59px);
+    height: 45px;
+    padding-left: 30px;
+    background-position: left 8px center;
+  }
+  .election-shugiin-51-wrapper .sbmt {
+    width: 59px;
+    height: 45px;
+    font-size: 16px;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-prefecture-nav {
+    padding: 0;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-prefecture-nav-title {
+    font-size: 18px;
+    padding: 25px 0 15px;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-prefecture-nav__list ul {
+    flex-wrap: nowrap;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-prefecture-nav__list ul li {
+    white-space: nowrap;
+    width: 12%;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-party-proportion-nav__list ul {
+    height: auto;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-party-proportion-nav__list ul li {
+    min-width: 57px;
+    white-space: nowrap;
+    margin-bottom: 11px;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-party-proportion-nav {
+    padding: 0;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-party-proportion-nav-title {
+    font-size: 18px;
+    padding: 25px 0 15px;
+  }
+  .election-shugiin-51-wrapper .election-shugiin-51-common-prefecture-nav__list ul li a,
+  .election-shugiin-51-wrapper .election-shugiin-51-common-party-proportion-nav__list ul li a {
+    font-size: 12px;
+    padding: 16px 2px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .election-shugiin-51-wrapper .election-shugiin-51-common-prefecture-nav__list ul li {
+    width: 15%;
+  }
+  .election-shugiin-51-wrapper .keyword {
+    background-size: 16px 16px;
+    background-position: left 4px center;
+    padding-left: 24px;
+  }
+}
+/* ▲▲▲ モーダル ▲▲▲ */
+/* リロードボタン用 */
+#reloadTgt {
+  display: flex;
+  justify-content: end;
+}
+#reloadTgt .autoReload {
+  text-align: right;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: none;
+}
+@media screen and (max-width: 599px) {
+  #reloadTgt .autoReload {
+    top: 78px;
+  }
+}
+#reloadTgt .autoReload.active {
+  display: block;
+  margin-bottom: 24px;
+}
+@media screen and (max-width: 599px) {
+  #reloadTgt .autoReload.active {
+    margin-bottom: 16px;
+  }
+}
+#reloadTgt .autoReload .ttl {
+  font-size: 14px;
+  color: #666;
+  padding-right: 5px;
+}
+#reloadTgt .switchArea {
+  line-height: 22px;
+  letter-spacing: 0;
+  text-align: center;
+  font-size: 13px;
+  position: relative;
+  width: 106px;
+  background: #fff;
+}
+#reloadTgt .switchArea input[type=checkbox] {
+  display: none;
+}
+#reloadTgt .switchArea label {
+  display: block;
+  box-sizing: border-box;
+  height: 24px;
+  border: 2px solid #999999;
+  border-radius: 12px;
+  cursor: pointer;
+}
+#reloadTgt .switchArea input[type=checkbox]:checked + label {
+  border-color: #081b6d;
+}
+#reloadTgt .switchArea label span:after {
+  content: "自動更新OFF";
+  padding: 0 0 0 12px;
+  font-weight: bold;
+  color: #999999;
+}
+#reloadTgt .switchArea input[type=checkbox]:checked + label span:after {
+  content: "自動更新ON";
+  padding: 0 12px 0 0;
+  font-weight: bold;
+  color: #081b6d;
+}
+#reloadTgt .switchArea #swImg {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #999999;
+  top: 4px;
+  left: 4px;
+  border-radius: 26px;
+  transition: 0.2s;
+}
+#reloadTgt .switchArea input[type=checkbox]:checked ~ #swImg {
+  transform: translateX(82px);
+  background: #081b6d;
+}
+
+@media screen and (max-width: 370px) {
+  #reloadTgt.election2024_auto_reload-yc .switchArea {
+    width: 98px;
+  }
+  #reloadTgt.election2024_auto_reload-yc .switchArea #swImg {
+    width: 12px;
+    height: 12px;
+    top: 6px;
+  }
+  #reloadTgt.election2024_auto_reload-yc .switchArea input[type=checkbox]:checked ~ #swImg {
+    transform: translateX(78px);
+  }
+}

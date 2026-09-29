@@ -1,0 +1,540 @@
+.top-editable {
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 16px;
+}
+.top-editable--lower {
+  border-top: 2px solid #eaeaea;
+}
+.editable-no-border {
+  border: none !important;
+}
+.senkyoku-editable {
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 16px;
+}
+.editable-parts3__link {
+  display: grid;
+  grid-template-columns: 34.75783475783476% 1fr;
+  column-gap: 3.418803418803419%;
+}
+.editable-parts3__img {
+  margin: 0;
+}
+.editable-parts3__img img {
+  width: 100%;
+}
+.editable-parts3__title {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+a.editable-parts3__link .editable-parts3__title {
+  position: relative;
+}
+a.editable-parts3__link:not([target="_blank"]) .editable-parts3__title::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  content: '';
+  border-style: solid none solid solid;
+  border-color: transparent transparent transparent #000;
+}
+a.editable-parts3__link[target="_blank"] .editable-parts3__title::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  background: url("/senkyo-data/database/shugiin/2026/img/icon_link_blank.png") 0 0 no-repeat;
+  background-size: contain;
+  content: '';
+}
+.editable-parts3__text {
+  font-size: 1.4rem;
+}
+.editable-parts9__list-link {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 34.75783475783476% 1fr;
+  column-gap: 3.418803418803419%;
+}
+a.editable-parts9__list-link:not([target="_blank"]) .editable-parts9__list-text::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  content: '';
+  border-style: solid none solid solid;
+  border-color: transparent transparent transparent #000;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+a.editable-parts9__list-link[target="_blank"] .editable-parts9__list-text::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  background: url("/senkyo-data/database/shugiin/2026/img/icon_link_blank.png") 0 0 no-repeat;
+  background-size: contain;
+  content: '';
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.editable-parts9__list-img {
+  margin: 0;
+}
+.editable-parts9__list-text {
+  font-weight: bold;
+  position: relative;
+  margin: 0;
+}
+.nhk-news-web {
+  margin: 0 auto;
+  width: 100%;
+}
+.nhk-news-web__title {
+  font-weight: bold;
+}
+.nhk-news-web__item .new {
+  color: #f30a0b;
+}
+.nhk-news-web__link {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 34.75783475783476% 1fr;
+  column-gap: 3.418803418803419%;
+}
+.nhk-news-web__link:not([target="_blank"]) .nhk-news-web__text::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  content: '';
+  border-style: solid none solid solid;
+  border-color: transparent transparent transparent #000;
+  left: 0;
+}
+.nhk-news-web__thumb {
+  height: auto;
+  width: 100%;
+}
+.nhk-news-web__text {
+  position: relative;
+  font-weight: bold;
+}
+.nhk-news-web__text::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  background: url("/senkyo-data/database/shugiin/2026/img/icon_link_blank.png") 0 0 no-repeat;
+  background-size: contain;
+  content: '';
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 0 !important;
+  left: 0;
+}
+.nhk-news-web__more {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.nhk-news-web__more a {
+  position: relative;
+}
+.nhk-news-web__more a::before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  background: url("/senkyo-data/database/shugiin/2026/img/icon_link_blank.png") 0 0 no-repeat;
+  background-size: contain;
+  content: '';
+  left: 0;
+}
+.nhk-news-web__more .sitename {
+  color: #7a7a7a;
+}
+@media print, screen and (min-width: 768px) {
+  .top-editable {
+    margin: 40px 0 32px;
+    row-gap: 32px;
+  }
+  #senkyo-main .editable:first-child .top-editable,
+  .mainView--hidden + .editable .top-editable {
+    margin-top: 0;
+  }
+  .senkyoku-editable {
+    margin: 40px 0 48px;
+    row-gap: 32px;
+  }
+  .editable-parts3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 1.8%;
+  }
+  .editable-parts3__link {
+    grid-template-columns: 42.76985743380855% 1fr;
+    column-gap: 3.665987780040733%;
+  }
+  .editable-parts3__title {
+    font-size: 1.8rem;
+    line-height: 1.777777777777778;
+    margin-top: -0.3em;
+  }
+  a.editable-parts3__link .editable-parts3__title {
+    padding-left: 16px;
+  }
+  a.editable-parts3__link:not([target="_blank"]) .editable-parts3__title::before {
+    margin-top: -4px;
+    border-width: 3px 0 3px 6px;
+  }
+  a.editable-parts3__link:not([target="_blank"]) .editable-parts3__title::before {
+    margin-top: 0;
+    top: 0.65em;
+    left: 0;
+  }
+  a.editable-parts3__link:not([target="_blank"]):hover .editable-parts3__title::before {
+    border-left-color: #2795d4;
+  }
+  a.editable-parts3__link[target="_blank"] .editable-parts3__title::before {
+    margin-top: -4px;
+    width: 10px;
+    height: 9px;
+  }
+  a.editable-parts3__link[target="_blank"] .editable-parts3__title::before {
+    margin-top: 0;
+    top: 0.55em;
+    left: 0;
+  }
+  a.editable-parts3__link[target="_blank"]:hover .editable-parts3__title::before {
+    background-image: url("/senkyo-data/database/shugiin/2026/img/icon_link_blank_on.png");
+  }
+  .editable-parts3__text {
+    line-height: 1.714285714285714;
+    margin: 6px 0 0 0;
+  }
+  .editable-parts9__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 1.8%;
+  }
+  .editable-parts9__list-link {
+    grid-template-columns: 22.403258655804482% 1fr;
+    column-gap: 2.036659877800407%;
+  }
+  a.editable-parts9__list-link:not([target="_blank"]) .editable-parts9__list-text::before {
+    margin-top: -4px;
+    border-width: 3px 0 3px 6px;
+  }
+  a.editable-parts9__list-link:not([target="_blank"]) .editable-parts9__list-text::before {
+    margin-top: 0px;
+  }
+  a.editable-parts9__list-link:not([target="_blank"]):hover .editable-parts9__list-text::before {
+    border-left-color: #2795d4;
+  }
+  a.editable-parts9__list-link[target="_blank"] .editable-parts9__list-text::before {
+    margin-top: -4px;
+    width: 10px;
+    height: 9px;
+  }
+  a.editable-parts9__list-link[target="_blank"] .editable-parts9__list-text::before {
+    margin-top: 0px;
+  }
+  a.editable-parts9__list-link[target="_blank"]:hover .editable-parts9__list-text::before {
+    background-image: url("/senkyo-data/database/shugiin/2026/img/icon_link_blank_on.png");
+  }
+  .editable-parts9__list-text {
+    font-size: 1.6rem;
+    line-height: 2;
+    padding-left: 16px;
+    padding-right: 40px;
+  }
+  .nhk-news-web {
+    margin-top: 15px;
+  }
+  .nhk-news-web + [class*="editable-parts"] {
+    margin-top: 20px;
+  }
+  .nhk-news-web__title {
+    font-size: 2rem;
+    line-height: 1.6;
+    margin-bottom: 0.8em;
+  }
+  .nhk-news-web__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 1.8%;
+  }
+  .nhk-news-web__item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .nhk-news-web__item .new {
+    font-size: 1rem;
+    display: block;
+    padding-left: 4px;
+  }
+  .nhk-news-web__link {
+    grid-template-columns: 22.403258655804482% 1fr;
+    column-gap: 2.036659877800407%;
+  }
+  .nhk-news-web__link:hover .nhk-news-web__text::before {
+    background-image: url("/senkyo-data/database/shugiin/2026/img/icon_link_blank_on.png");
+  }
+  .nhk-news-web__link:not([target="_blank"]) .nhk-news-web__text::before {
+    margin-top: -4px;
+    border-width: 3px 0 3px 6px;
+  }
+  .nhk-news-web__link:not([target="_blank"]):hover .nhk-news-web__text::before {
+    border-left-color: #2795d4;
+  }
+  .nhk-news-web__text {
+    font-size: 1.6rem;
+    padding-left: 17px;
+  }
+  .nhk-news-web__text::before {
+    margin-top: -4px;
+    width: 10px;
+    height: 9px;
+  }
+  .nhk-news-web__more {
+    margin-top: 24px;
+  }
+  .nhk-news-web__more a::before {
+    margin-top: -4px;
+    width: 10px;
+    height: 9px;
+  }
+  .nhk-news-web__more a:hover::before {
+    background-image: url("/senkyo-data/database/shugiin/2026/img/icon_link_blank_on.png");
+  }
+  .nhk-news-web__more a:hover .sitename {
+    color: #2795d4;
+  }
+  .nhk-news-web__more a {
+    font-size: 1.3rem;
+    padding-left: 22px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .top-editable {
+    margin: 32px 0 28px;
+  }
+  #senkyo-main .editable:first-child .top-editable,
+  .mainView--hidden + .editable .top-editable {
+    margin-top: 20px;
+  }
+  .senkyoku-editable {
+    margin: 32px 0;
+  }
+  .editable-parts3__link + .editable-parts3__link {
+    margin: 16px auto 0 auto;
+  }
+  .editable-parts3__title {
+    line-height: 1.2;
+  }
+  a.editable-parts3__link .editable-parts3__title {
+    padding-left: 12px;
+  }
+  a.editable-parts3__link:not([target="_blank"]) .editable-parts3__title::before {
+    margin-top: -3px;
+    border-width: 3px 0 3px 4px;
+  }
+  a.editable-parts3__link:not([target="_blank"]) .editable-parts3__title::before {
+    margin-top: 0;
+    top: 0.35em;
+    left: 0;
+  }
+  a.editable-parts3__link[target="_blank"] .editable-parts3__title::before {
+    margin-top: -3px;
+    width: 7.5px;
+    height: 7px;
+  }
+  a.editable-parts3__link[target="_blank"] .editable-parts3__title::before {
+    margin-top: 0;
+    top: 0.35em;
+    left: 0;
+  }
+  .editable-parts3__text {
+    line-height: 1.2;
+    margin: 6px 0 0 0;
+  }
+  .editable-parts9__list {
+    margin: 0 auto;
+  }
+  .editable-parts9__list-el + .editable-parts9__list-el {
+    margin-top: 16px;
+  }
+  a.editable-parts9__list-link:not([target="_blank"]) .editable-parts9__list-text::before {
+    margin-top: -3px;
+    border-width: 3px 0 3px 4px;
+  }
+  a.editable-parts9__list-link[target="_blank"] .editable-parts9__list-text::before {
+    margin-top: -3px;
+    width: 7.5px;
+    height: 7px;
+  }
+  .editable-parts9__list-text {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    padding-left: 12px;
+  }
+  .nhk-news-web__title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 0.8em;
+  }
+  .nhk-news-web__item {
+    position: relative;
+    margin-top: 12px;
+  }
+  .nhk-news-web__item .new {
+    font-size: 1rem;
+    display: inline;
+    padding-left: 1.424501424501424%;
+  }
+  .nhk-news-web__link:not([target="_blank"]) .nhk-news-web__text::before {
+    margin-top: -3px;
+    border-width: 3px 0 3px 4px;
+  }
+  .nhk-news-web__text {
+    font-size: 1.6rem;
+    padding-left: 12px;
+  }
+  .nhk-news-web__text::before {
+    margin-top: -3px;
+    width: 7.5px;
+    height: 7px;
+  }
+  .nhk-news-web__more {
+    margin-top: 16px;
+  }
+  .nhk-news-web__more a::before {
+    margin-top: -3px;
+    width: 7.5px;
+    height: 7px;
+  }
+  .nhk-news-web__more a {
+    font-size: 1.1rem;
+    padding-left: 14px;
+  }
+}
+
+/* --- 2026/1/27 公示日状態の対応 --- */
+
+@media print, screen and (min-width: 768px) {
+  /* PC時、党派別立候補者数が下段のとき（小選挙区の地図の下）になっているときの下余白を作成 */
+  .home #ancPartySeatsAll + .vm-PartySeatsAll.full-bleed {
+    padding-bottom: 28px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* SP時、検索フォーム下の編集エリア（最新選挙ニュース）の上余白を設定 */
+  .home .vm-Search + .editable.inline-bleed {
+    padding-top: 28px;
+  }
+}
+
+/* --- トップリードのリンクアンダーライン --- */
+
+.top-lead__text a {
+  text-decoration: underline;
+}
+
+/* --- トップにボートマッチバナーを追加 --- */
+.vm-votebanner__color {
+  background-color: #028cbf !important;
+}
+
+/* --- 選挙区ページに出口調査バナーを追加 --- */
+.skh .banner-exitpoll {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: min(calc(74 / 375 * 100vw), 74px);
+  margin-top: 20px;
+  background-color: #328296;
+  border-radius: 6px;
+  color: #fff;
+}
+@media print, screen and (min-width: 768px) {
+  .skh .banner-exitpoll {
+    display: block;
+    height: auto;
+  }
+}
+.skh .banner-exitpoll:hover {
+  background-color: #40a6bf;
+}
+.skh .banner-exitpoll::after { /* 矢印アイコン */
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: min(calc(16 / 375 * 100vw), 16px);
+  width: min(calc(21 / 375 * 100vw), 21px);
+  height: min(calc(21 / 375 * 100vw), 21px);
+  background: url("/senkyo-data/database/shugiin/2026/img/icon_bnr.png") no-repeat 0 0 / 100%;
+  transform: translateY(-50%);
+}
+@media print, screen and (min-width: 768px) {
+  .skh .banner-exitpoll::after {
+    right: 30px;
+    width: 28px;
+    height: 28px;
+  }
+}
+.skh .banner-exitpoll::before { /* 出口調査アイコン */
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: min(calc(24 / 375 * 100vw), 24px);
+  width: min(calc(24 / 375 * 100vw), 24px);
+  height: min(calc(30 / 375 * 100vw), 30px);
+  background: url("/senkyo-data/database/shugiin/2026/img/icon_exitpoll.svg") no-repeat 0 0 / 100%;
+  transform: translateY(-50%);
+}
+@media print, screen and (min-width: 768px) {
+  .skh .banner-exitpoll::before {
+    left: 40px;
+    width: 31px;
+    height: 39px;
+  }
+}
+.skh .banner-exitpoll-body {
+  padding-left: min(calc(66 / 375 * 100vw), 66px);
+  line-height: 1.3333;
+}
+@media print, screen and (min-width: 768px) {
+  .skh .banner-exitpoll-body {
+    display: grid;
+    grid-template-columns: calc(2.4rem * 3 + 16px) auto;
+    align-items: center;
+    height: 72px;
+    padding-left: 95px;
+  }
+}
+.skh .banner-exitpoll-body .text-lg {
+  font-weight: bold;
+  font-size: min(calc(22 / 375 * 100vw), 22px);
+}
+@media print, screen and (min-width: 768px) {
+  .skh .banner-exitpoll-body .text-lg {
+    font-size: 3.2rem;
+  }
+  .skh .banner-exitpoll-body .text-lg br {
+    display: none;
+  }
+}
+.skh .banner-exitpoll-body .text-md {
+  font-weight: bold;
+  font-size: min(calc(18 / 375 * 100vw), 18px);
+}
+@media print, screen and (min-width: 768px) {
+  .skh .banner-exitpoll-body .text-md {
+    font-size: 2.4rem;
+  }
+}

@@ -1,0 +1,1 @@
+const iOS=!!navigator.platform&&/iPhone/.test(navigator.platform);iOS&&document.querySelector('link[rel="manifest"]').setAttribute("rel","invalid-ios"),"serviceWorker"in navigator&&window.addEventListener("load",function(){navigator.serviceWorker.register("/yol-sw.js").then(function(t){t.update()}).catch(function(t){})});
