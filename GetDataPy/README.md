@@ -6,7 +6,6 @@
 
 データ取得時点の各サイトを保存したものを、GitHub Pagesで公開しています。
 
-- [保存ページ一覧](https://ryouy.github.io/election2026/)
 - [読売新聞 開票速報・結果](https://ryouy.github.io/election2026/snapshots/yomiuri/)
 - [NHK 選挙結果](https://ryouy.github.io/election2026/snapshots/nhk/)
 
